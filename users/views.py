@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets, permissions
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.exceptions import PermissionDenied
-from .serializer import UserSerializer, FavoriteSerializer
+from .serializers import UserSerializer, FavoriteSerializer
 from .models import Favorite
 
 User = get_user_model()

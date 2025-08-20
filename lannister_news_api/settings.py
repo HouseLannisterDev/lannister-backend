@@ -134,5 +134,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# lannister_news_api/settings.py
+AUTH_USER_MODEL = "users.CustomUser"
+
 #cors authorization
 CORS_ALLOWED_ORIGINS = []
