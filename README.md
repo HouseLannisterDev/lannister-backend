@@ -1,6 +1,63 @@
 # lannister-backend
 # 🚀 Proyecto
 
+# Lannister News API
+
+API en Django/DRF + MySQL + sesiones persistentes con Redis.
+
+## Requisitos
+- Python 3.12/3.13
+- MySQL 8
+- Docker Desktop (opcional, para Redis)
+- Git
+
+## Setup rápido (dev)
+```bash
+git clone <repo>
+cd lannister-backend
+
+# entorno
+python -m venv venv
+# Windows PowerShell
+.\venv\Scripts\Activate.ps1
+# macOS/Linux
+# source venv/bin/activate
+
+pip install -r requirements.txt
+
+# variables de entorno
+cp .env.example .env
+# (ajusta credenciales si es necesario)
+
+# Redis (Docker)
+docker compose up -d
+
+# Migraciones
+py manage.py migrate
+py manage.py migrate sessions
+
+# Usuario admin (opcional)
+py manage.py createsuperuser
+
+# Run
+py manage.py runserver
+
+Endpoints de Auth (sesiones en cookie)
+
+  GET /users/auth/csrf/ → setea cookie csrftoken
+  POST /users/auth/login/ → body {"username","password"} (requiere header X-CSRFToken)
+  GET /users/auth/me/ → estado de sesión
+  POST /users/auth/logout/ → requiere X-CSRFToken
+  En Postman: primero csrf/, luego login/ con X-CSRFToken y Postman enviará las cookies (csrftoken, sessionid) automáticamente.
+
+Users & Favorites
+
+  GET/POST /users/
+  GET/PATCH/DELETE /users/{id}/
+  GET/POST /users/favorites/
+  GET/PATCH/DELETE /users/favorites/{id}/ (autenticado)
+
+
 ## 📌 Estructura de Ramas en Git
 
 Para garantizar un desarrollo organizado y eficiente, utilizamos **Git Flow** como estrategia de control de versiones. Este flujo nos permite mantener la estabilidad del código en producción mientras facilitamos el desarrollo de nuevas funcionalidades.
