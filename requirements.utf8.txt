@@ -1,0 +1,33 @@
+asgiref==3.9.1
+Django==5.2.5
+django-cors-headers==4.7.0
+django-redis==6.0.0
+djangorestframework==3.16.1
+mysqlclient==2.2.7
+python-dotenv==1.1.1
+redis==6.4.0
+sqlparse==0.5.3
+tzdata==2025.2
+feedparser==6.0.11
+feedparser==6.0.11
+beautifulsoup4==4.12.3
+requests==2.32.3
+python-dateutil==2.9.0.post0
+html5lib==1.1
+
+
+# ---- MongoDB ----
+pymongo[srv]==4.8.0
+
+# ---- Validación / Modelado ----
+pydantic==2.8.2
+
+# ---- Scraping ----
+beautifulsoup4==4.12.3
+requests==2.32.3
+python-dateutil==2.9.0.post0
+
+# ---- Sentimiento (ligero, Py3.13-friendly) ----
+vaderSentiment==3.3.2
+langdetect==1.0.9
+
