@@ -1,0 +1,280 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": [
+        "hola",
+        "buenos días",
+        "buenas tardes",
+        "buenas noches",
+        "saludos",
+        "qué tal",
+        "cómo estás",
+        "hey"
+      ],
+      "responses": [
+        "¡Hola! Soy tu asistente de noticias. ¿En qué puedo ayudarte?",
+        "¡Buenos días! ¿Qué noticias te interesan hoy?",
+        "¡Hola! Estoy aquí para ayudarte con las últimas noticias.",
+        "¡Saludos! ¿Sobre qué tema quieres conocer las noticias?"
+      ]
+    },
+    {
+      "tag": "despedida",
+      "patterns": [
+        "adiós",
+        "nos vemos",
+        "hasta luego",
+        "chao",
+        "gracias",
+        "bye",
+        "hasta pronto"
+      ],
+      "responses": [
+        "¡Hasta luego! Que tengas un buen día.",
+        "¡Nos vemos! Vuelve cuando quieras más noticias.",
+        "¡Adiós! Estaré aquí cuando necesites información.",
+        "¡Hasta pronto! Cuídate mucho."
+      ]
+    },
+    {
+      "tag": "deportes",
+      "patterns": [
+        "noticias de deportes",
+        "qué pasa en deportes",
+        "últimas noticias de deportes",
+        "información sobre deportes",
+        "cuéntame de deportes",
+        "novedades en deportes"
+      ],
+      "responses": [
+        "📰 Deportes electrónicos incluidos como categoría deportiva en la legislación colombiana\nC, 1 de abril de 2025 (Prensa-Senado) Por unanimidad la plenaria del Senado aprobó el proyecto de ley que reconoce los deportes electrónicos (eSports)...\n📍 Fuente: Senado de Colombia",
+        "📰 Colombia se prepara para el Mundial de Deportes Acuáticos en Singapur\nColombia se prepara para el Mundial de Deportes Acuáticos en Singapur ... Una delegación colombiana conformada por 15 atletas se prepara para disputar...\n📍 Fuente: Comité Olímpico Colombiano",
+        "📰 Fútbol Colombiano, nuevo DT del Unión, la primera carrera de la Fórmula 1 y más deportes este 14 de marzo\nDavid Alonso ya compite en el Moto 2. El corredor colombo español David Alonso del CF Moto Aspar Team finalizó en la casilla 14 de las primeras prácti...\n📍 Fuente: RTVC Noticias",
+        "📰 La secretaría de Deportes y Recreación de Pereira se une con el sector académico para promover la actividad física\nDirección: Cra. 7 No. 18-55 Pereira - Risaralda. ... de 1:00 a 4:00 p.m. viernes de 7:00 a.m. a 3:00 p.m.....\n📍 Fuente: Alcaldía de Pereira",
+        "📰 En Andes los deportistas de los colegios del Suroeste compiten en diez deportes. El deporte contribuye a la formación en valores de los jóvenes deportistas\nIniciaron las competencias del subregional Suroeste de los Juegos Deportivos Intercolegiados 2025 en el municipio de Andes. Las 10 disciplinas en cont...\n📍 Fuente: Instituto Departamental de Deportes de Antioquia",
+        "Aquí tienes las últimas noticias de deportes. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de deportes que tengo.",
+        "Te muestro lo más destacado en deportes."
+      ]
+    },
+    {
+      "tag": "Deportes",
+      "patterns": [
+        "noticias de Deportes",
+        "qué pasa en Deportes",
+        "últimas noticias de Deportes",
+        "información sobre Deportes",
+        "cuéntame de Deportes",
+        "novedades en Deportes"
+      ],
+      "responses": [
+        "📰 Escuelas Deportivas Colsubsidio\nNuestras sedes se encuentran en Bogotá y municipios aledaños, con fácil acceso y comodidad para todos. Instructor de la escuela de tenis de Colsubsidi...\n📍 Fuente: Colsubsidio",
+        "📰 Bogotá impulsa primer plan pedagógico en colegios de e-sports en América Latina\nCon más de 80 sesiones diseñadas para un año académico, Bogotá presenta el primer plan pedagógico de esports para colegios en Latinoamérica....\n📍 Fuente: Bogota.gov.co",
+        "📰 ¡Atención, Barranquilla! Desde hoy comienzan las inscripciones para las Escuelas de Formación Deportiva 2025\nEl programa, que abarca 14 disciplinas deportivas, brinda a los participantes la oportunidad de desarrollar sus habilidades en un entorno que promueve...\n📍 Fuente: Alcaldía de Barranquilla",
+        "📰 ¡EN VIVO! Nacional vs Quindío por la ida de los octavos de la Copa Betplay\nEl conjunto Verdolaga viene de empatar frente al América por la Liga colombiana....\n📍 Fuente: ESPN Colombia",
+        "📰 Festival de Verano 18 de agosto: disfruta del Reto Rodante\nSi aún no tienes ningún plan, acá te contamos actividades imperdibles del Festival de Verano 2025 para este 18 de agosto. de 2025....\n📍 Fuente: Bogota.gov.co",
+        "Aquí tienes las últimas noticias de Deportes. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de Deportes que tengo.",
+        "Te muestro lo más destacado en Deportes."
+      ]
+    },
+    {
+      "tag": "politica",
+      "patterns": [
+        "noticias de politica",
+        "qué pasa en politica",
+        "últimas noticias de politica",
+        "información sobre politica",
+        "cuéntame de politica",
+        "novedades en politica"
+      ],
+      "responses": [
+        "📰 Futbolista de la selección Colombia denunció la falta de apoyo del Gobierno al deporte femenino en Colombia: “Pongámonos la mano en el corazón y en los zapatos del que lo está dando todo con las uñas”\nLuego del partido contra Brasil, la defensora Daniela Arias alzó la voz en zona mixta para reflejar el sentir de muchos deportistas: “El deportista de...\n📍 Fuente: Infobae",
+        "📰 Alerta por próximo recorte al presupuesto del deporte para 2026 en Gobierno de Gustavo Petro\nVamos a seguir denunciando este abandono y exigiendo que el deporte sea una prioridad nacional\", dice Parodi. El deporte colombiano ya vislumbraba un ...\n📍 Fuente: ELTIEMPO.COM",
+        "📰 Deporte Vs. Apartheid: la historia de Nelson Mandela y el rugby | Señal Colombia\nEse día Nelson Mandela asumió como el primer presidente de raza negra en un país tradicionalmente marcado por la segregación racial. Ese mismo día Mad...\n📍 Fuente: Señal Colombia",
+        "📰 Inesperado destino de Harold Rivera: presentado en su nuevo club\nEl elegido es Harold Rivera, ex Unión, Patriotas, Santa Fe y Atlético Bucaramanga en la Liga Betplay. Además fue entrenador de las selecciones Sub-17 ...\n📍 Fuente: Futbolred",
+        "📰 Nocaut para el deporte en Colombia… (Opinión)\nLa decisión del Gobierno no es solo un tijeretazo a las cifras oficiales; es un golpe directo a miles de sueños, a la salud pública y tejido social....\n📍 Fuente: ELTIEMPO.COM",
+        "Aquí tienes las últimas noticias de politica. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de politica que tengo.",
+        "Te muestro lo más destacado en politica."
+      ]
+    },
+    {
+      "tag": "Judiciales",
+      "patterns": [
+        "noticias de Judiciales",
+        "qué pasa en Judiciales",
+        "últimas noticias de Judiciales",
+        "información sobre Judiciales",
+        "cuéntame de Judiciales",
+        "novedades en Judiciales"
+      ],
+      "responses": [
+        "📰 ",
+        "📰 ",
+        "📰 ",
+        "📰 ",
+        "📰 ",
+        "Aquí tienes las últimas noticias de Judiciales. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de Judiciales que tengo.",
+        "Te muestro lo más destacado en Judiciales."
+      ]
+    },
+    {
+      "tag": "tecnologia",
+      "patterns": [
+        "noticias de tecnologia",
+        "qué pasa en tecnologia",
+        "últimas noticias de tecnologia",
+        "información sobre tecnologia",
+        "cuéntame de tecnologia",
+        "novedades en tecnologia"
+      ],
+      "responses": [
+        "📰 Cataluña impulsa un plan para agilizar la resolución de sentencias judiciales con Inteligencia Artificial\nCataluña impulsa un plan para agilizar la resolución de sentencias judiciales con Inteligencia Artificial · La nueva herramienta del programa de la Ge...\n📍 Fuente: EL PAÍS",
+        "📰 Moda digital: donde se encuentran la tecnología, la cultura y la creatividad\nKadine James · El auge de la moda digital ofrece una nueva forma de vestir y expresarse en el mundo virtual. · Impulsadas por tecnología de vanguardia...\n📍 Fuente: The World Economic Forum",
+        "📰 Empresarios tolimenses se preparan para misión de moda y tecnología en Medellín\nEmpresarios tolimenses se preparan para misión de moda y tecnología en Medellín · Natha Zea · Diseño y Moda Nuevo Mundo · Levaus · Reed Green · Casa L...\n📍 Fuente: Gobernación del Tolima",
+        "📰 ‘Cleantech’: una posible solución para una moda más sostenible\nEsta fibra textil es la más utilizada en la fabricación de prendas de vestir: cada año se producen 60 millones de toneladas de este material. Como der...\n📍 Fuente: BBVA",
+        "📰 Algoritmos para analizar tendencias de moda por medio de IA\nDiseñadores usan algoritmos para analizar tendencias de moda por medio de inteligencia artificial. La inteligencia artificial está cambiando la forma ...\n📍 Fuente: La FM",
+        "Aquí tienes las últimas noticias de tecnologia. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de tecnologia que tengo.",
+        "Te muestro lo más destacado en tecnologia."
+      ]
+    },
+    {
+      "tag": "Moda",
+      "patterns": [
+        "noticias de Moda",
+        "qué pasa en Moda",
+        "últimas noticias de Moda",
+        "información sobre Moda",
+        "cuéntame de Moda",
+        "novedades en Moda"
+      ],
+      "responses": [
+        "📰 Sesiones abiertas: Historia de la moda y el arte\nSesiones abiertas: Historia de la moda y el arte · Por Vanessa Rosales, escritora y especialista en estudios de moda · Sesión 1 (7 de junio): La moda ...\n📍 Fuente: La Red Cultural del Banco de la República",
+        "📰 Ibagué, Negocios & Moda 2025: talento, industria y compradores en un solo lugar\nLa feria reunirá pasarelas, muestra comercial, Rueda de Negocios y una nutrida Agenda Académica del 28 al 30 de agosto en el Centro Comercial Multicen...\n📍 Fuente: Gobernación del Tolima",
+        "📰 Por primera vez en 26 años, Dosquebradas inauguró Eje Moda\nEn una noche sin precedentes, cerca de 300 personas entre representantes de entidades públicas, empresarios, medios de comunicación, ciudadanía e invi...\n📍 Fuente: Dosquebradas",
+        "📰 Bogotá sede Moda al Parque: pasarelas y talento emergente hasta 31 de mayo\n¡Bogotá, mi Ciudad, mi Casa es dese de la moda! Hasta el 31 de mayo de 2025, Bogotá vive una de las temporadas más esperadas: Moda al Parque, una inic...\n📍 Fuente: Bogota.gov.co",
+        "📰 Éxito total en el lanzamiento de ‘Cali Distrito Moda y la Pasarela de Inclusión Internacional’\nCompartir en: ... Santiago de Cali, mayo 15 de 2025. El lanzamiento de Cali Distrito Moda y la Pasarela de Inclusión Internacional fue todo un éxito. ...\n📍 Fuente: Gobernación del valle",
+        "Aquí tienes las últimas noticias de Moda. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de Moda que tengo.",
+        "Te muestro lo más destacado en Moda."
+      ]
+    },
+    {
+      "tag": "economia",
+      "patterns": [
+        "noticias de economia",
+        "qué pasa en economia",
+        "últimas noticias de economia",
+        "información sobre economia",
+        "cuéntame de economia",
+        "novedades en economia"
+      ],
+      "responses": [
+        "📰 Bohío: la empresa paisa que promueve la economía circular desde la moda\nBohío es una marca colombiana de ropa ambientalmente sostenible, inicialmente inspirada en el criollismo colombiano, fundada por los hermanos Juan Cam...\n📍 Fuente: Colombia Visible",
+        "📰 Exportaciones colombianas de moda han crecido 2,7% en 2025, EE.UU. el principal comprador\nExportaciones colombianas de moda han crecido 2,7% en 2025, EE.UU. el principal comprador · 1. Hacienda · Colombia estará entre las 30 economías más g...\n📍 Fuente: LaRepublica.co",
+        "📰 Empresas de los clústeres de macrosnacks, belleza, sistema moda, hábitat urbano y economía digital participarán en la macrorrueda de negocios que inicia hoy en Cali\nEntre las empresas destacadas que formarán parte de la rueda de negocios se encuentran Productos La Tribu Calima, Productos Drogam y Creaciones Chazar...\n📍 Fuente: Alcaldía de Santiago de Cali",
+        "📰 Bogotá Fashion Week 2025: La moda impulsa turismo y negocios en la capital\nEl Bogotá Fashion Week (BFW) 2025 es una iniciativa de la Cámara de Comercio de Bogotá (CCB), que no solo impulsa la economía creativa y textil, tambi...\n📍 Fuente: Bogota.gov.co",
+        "📰 Manos Reparadoras: la sostenibilidad de la moda en Bogotá\nLa moda sostenible en Bogotá se basa en estrategias de economía circular, que buscan mantener la ropa en uso el mayor tiempo posible. Esto implica min...\n📍 Fuente: Canal Capital",
+        "Aquí tienes las últimas noticias de economia. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de economia que tengo.",
+        "Te muestro lo más destacado en economia."
+      ]
+    },
+    {
+      "tag": "salud",
+      "patterns": [
+        "noticias de salud",
+        "qué pasa en salud",
+        "últimas noticias de salud",
+        "información sobre salud",
+        "cuéntame de salud",
+        "novedades en salud"
+      ],
+      "responses": [
+        "📰 Lleva el ayuno intermitente más allá de la moda\nComo profesional de la salud, sabes que la diferencia entre una recomendación y una prescripción con impacto está en el conocimiento profundo y bien.....\n📍 Fuente: Fundación Universitaria Juan N. Corpas",
+        "📰 Gobernación de Boyacá | Secretaría de Salud\nSecretaría de Salud de Boyacá avanza en la vacunación antirrábica de animales de compañía en todo el departamento. Perros y gatos son vacunados en los...\n📍 Fuente: Gobernación de Boyacá",
+        "📰 Enfermedades, migraciones y extinción: así afecta el cambio climático a los animales\nDaños y pérdidas en sus hábitats. El cambio climático provoca alteraciones dramáticas en todo el planeta: Desaparición de glaciares y deshielo de los ...\n📍 Fuente: Hablando en vidrio",
+        "📰 Tras décadas de rezago, abren clínica de grandes animales en U. de la Amazonía\nUbicada en la Granja Experimental Santo Domingo, esta clínica se destaca por una infraestructura de vanguardia que incluye quirófanos, áreas de hospit...\n📍 Fuente: CONtexto Ganadero",
+        "📰 Personas mayores de 60 años podrán ingresar con sus animales de compañía a servicios sociales en Bogotá\nEl proyecto piloto incluye protocolos de salud animal y jornadas de sensibilización, promoviendo la convivencia y el reconocimiento de los vínculos......\n📍 Fuente: Infobae",
+        "Aquí tienes las últimas noticias de salud. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de salud que tengo.",
+        "Te muestro lo más destacado en salud."
+      ]
+    },
+    {
+      "tag": "Animales",
+      "patterns": [
+        "noticias de Animales",
+        "qué pasa en Animales",
+        "últimas noticias de Animales",
+        "información sobre Animales",
+        "cuéntame de Animales",
+        "novedades en Animales"
+      ],
+      "responses": [
+        "📰 ",
+        "📰 ",
+        "📰 ",
+        "📰 ",
+        "📰 ",
+        "Aquí tienes las últimas noticias de Animales. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de Animales que tengo.",
+        "Te muestro lo más destacado en Animales."
+      ]
+    },
+    {
+      "tag": "Tecnología",
+      "patterns": [
+        "noticias de Tecnología",
+        "qué pasa en Tecnología",
+        "últimas noticias de Tecnología",
+        "información sobre Tecnología",
+        "cuéntame de Tecnología",
+        "novedades en Tecnología"
+      ],
+      "responses": [
+        "📰 Ministerio TIC exalta el talento de estudiantes de la Universidad de Cauca que viajarán a la final de la Competencia Mundial de TIC de Huawei en China\nLos equipos de redes de telecomunicaciones y nube de la Universidad del Cauca, compuestos por seis alumnos, vencieron a más de 4.264 estudiantes de Am...\n📍 Fuente: MINTIC Colombia",
+        "📰 Los mensajes de texto no mueren: así se mantienen vigentes en 2025 - Portafolio\nLos mensajes de texto no mueren: así se mantienen vigentes en 2025 Portafolio...\n📍 Fuente: Portafolio",
+        "📰 El innovador router que podría llegar a los hogares a ofrecer una conexión ultrarrápida y segura de internet - Semana.com\nEl innovador router que podría llegar a los hogares a ofrecer una conexión ultrarrápida y segura de internet Semana.com...\n📍 Fuente: Semana.com",
+        "📰 ANDICOM 40 en cifras - Impacto TIC\nANDICOM 40 en cifras Impacto TIC...\n📍 Fuente: Impacto TIC",
+        "📰 ¿Se acerca el fin de los teléfonos móviles? Para Bill Gates sí y estas son sus razones - Portafolio\n¿Se acerca el fin de los teléfonos móviles? Para Bill Gates sí y estas son sus razones Portafolio...\n📍 Fuente: Portafolio",
+        "Aquí tienes las últimas noticias de Tecnología. ¿Te interesa alguna en particular?",
+        "Estas son las noticias más relevantes de Tecnología que tengo.",
+        "Te muestro lo más destacado en Tecnología."
+      ]
+    },
+    {
+      "tag": "busqueda_general",
+      "patterns": [
+        "buscar noticias",
+        "qué noticias hay",
+        "últimas noticias",
+        "noticias de hoy",
+        "qué está pasando",
+        "noticias recientes",
+        "novedades",
+        "actualidad"
+      ],
+      "responses": [
+        "¿Sobre qué tema específico te gustaría conocer noticias?",
+        "Tengo noticias de varios temas: política, economía, deportes, tecnología, salud. ¿Cuál te interesa?",
+        "Puedo ayudarte con noticias de diferentes categorías. ¿Qué tema prefieres?",
+        "¿Hay algún tema en particular que te interese?"
+      ]
+    },
+    {
+      "tag": "no_entiendo",
+      "patterns": [],
+      "responses": [
+        "No estoy seguro de entender. ¿Podrías ser más específico sobre qué noticias buscas?",
+        "Disculpa, no entendí bien. Puedo ayudarte con noticias de política, economía, deportes, tecnología y más.",
+        "No comprendí tu solicitud. ¿Puedes decirme sobre qué tema quieres noticias?",
+        "Lo siento, no entendí. Intenta preguntarme sobre noticias de un tema específico."
+      ]
+    }
+  ]
+}

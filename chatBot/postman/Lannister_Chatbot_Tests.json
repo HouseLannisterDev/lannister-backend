@@ -1,0 +1,366 @@
+{
+  "info": {
+    "name": "Lannister ChatBot API Tests",
+    "description": "Colección completa para probar el chatbot de noticias con IA",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/health/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Saludo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"hola\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Malas Noticias",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"dame malas noticias\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Buenas Noticias",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"dame buenas noticias\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Noticias de Deportes",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"noticias de deportes\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Noticias de Tecnología",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"últimas noticias de tecnología\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Noticias de Moda",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"qué hay de moda\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Noticias Judiciales",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"noticias judiciales\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Noticias de Animales",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"noticias sobre animales\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Ayuda",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"ayuda\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Despedida",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"adiós\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - Consulta con Sesión",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"dame noticias de deportes\",\n  \"session_id\": \"test-session-123\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/chat/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "chat"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Feedback - Positivo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message_id\": 1,\n  \"rating\": 5,\n  \"comment\": \"Excelente respuesta, muy útil\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/feedback/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "feedback"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Feedback - Negativo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message_id\": 2,\n  \"rating\": 2,\n  \"comment\": \"La respuesta no fue muy precisa\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/feedback/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "feedback"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Historial - Por Sesión",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/history/?session_id=test-session-123",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "history"],
+          "query": [
+            {
+              "key": "session_id",
+              "value": "test-session-123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Historial - Últimos 10",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/history/?limit=10",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "history"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Estadísticas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/chatbot/stats/",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chatbot", "stats"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}

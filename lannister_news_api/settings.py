@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # Local
     "users",
     "news",  # app para scraping + Mongo
+    "chatBot",  # app para chatbot con IA
 ]
 
 # =========================

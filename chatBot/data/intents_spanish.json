@@ -1,0 +1,373 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": [
+        "hola",
+        "hi",
+        "hey",
+        "hello",
+        "buenos días",
+        "buenas tardes",
+        "buenas noches",
+        "saludos",
+        "que tal",
+        "como estas"
+      ],
+      "responses": [
+        "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "¡Hi! ¿Qué tal? ¿Te gustaría ver las últimas noticias?",
+        "¡Hola! Estoy aquí para ayudarte con noticias e información.",
+        "¡Buenos días! ¿Hay algún tema específico que te interese?"
+      ]
+    },
+    {
+      "tag": "despedida",
+      "patterns": [
+        "adiós",
+        "hasta luego",
+        "nos vemos",
+        "chao",
+        "bye",
+        "goodbye",
+        "hasta la vista",
+        "que tengas buen día"
+      ],
+      "responses": [
+        "¡Hasta luego! Que tengas un excelente día.",
+        "¡Adiós! Vuelve cuando quieras más noticias.",
+        "¡Nos vemos! Cuídate mucho.",
+        "¡Hasta la próxima! Siempre estaré aquí para ayudarte."
+      ]
+    },
+    {
+      "tag": "agradecimiento",
+      "patterns": [
+        "gracias",
+        "thanks",
+        "muchas gracias",
+        "te lo agradezco",
+        "perfecto",
+        "excelente",
+        "muy bien"
+      ],
+      "responses": [
+        "¡De nada! Me alegra poder ayudarte.",
+        "¡Un placer! ¿Hay algo más en lo que pueda asistirte?",
+        "¡Con gusto! Estoy aquí para lo que necesites.",
+        "¡Perfecto! ¿Te interesa algún otro tema?"
+      ]
+    },
+    {
+      "tag": "Deportes",
+      "patterns": [
+        "deportes",
+        "fútbol",
+        "football",
+        "baloncesto",
+        "basketball",
+        "tenis",
+        "golf",
+        "béisbol",
+        "voleibol",
+        "atletismo",
+        "natación",
+        "ciclismo",
+        "running",
+        "maratón",
+        "juegos olímpicos",
+        "mundial",
+        "liga",
+        "equipo",
+        "partido",
+        "gol",
+        "campeonato",
+        "torneo",
+        "noticias deportivas",
+        "deportivas",
+        "quiero noticias de deportes",
+        "dime sobre deportes",
+        "cuéntame de fútbol"
+      ],
+      "responses": [
+        "📰 Aquí tienes las últimas noticias deportivas:",
+        "⚽ Te muestro las novedades más recientes del mundo deportivo:",
+        "🏀 Estas son las noticias deportivas más actuales:"
+      ]
+    },
+    {
+      "tag": "Tecnología",
+      "patterns": [
+        "tecnología",
+        "tech",
+        "inteligencia artificial",
+        "AI",
+        "IA",
+        "robot",
+        "robots",
+        "smartphone",
+        "celular",
+        "móvil",
+        "computadora",
+        "ordenador",
+        "software",
+        "hardware",
+        "internet",
+        "web",
+        "aplicación",
+        "app",
+        "programación",
+        "código",
+        "desarrollador",
+        "startup",
+        "bitcoin",
+        "criptomoneda",
+        "blockchain",
+        "realidad virtual",
+        "VR",
+        "realidad aumentada",
+        "AR",
+        "innovación",
+        "digital",
+        "ciberseguridad",
+        "hacker",
+        "noticias de tecnología",
+        "tecnológicas",
+        "tech news"
+      ],
+      "responses": [
+        "💻 Aquí tienes las últimas noticias de tecnología:",
+        "🚀 Te muestro las novedades más recientes del mundo tech:",
+        "⚡ Estas son las noticias tecnológicas más actuales:"
+      ]
+    },
+    {
+      "tag": "Moda",
+      "patterns": [
+        "moda",
+        "fashion",
+        "ropa",
+        "vestido",
+        "camisa",
+        "pantalón",
+        "zapatos",
+        "accesorios",
+        "belleza",
+        "beauty",
+        "maquillaje",
+        "makeup",
+        "tendencias",
+        "trends",
+        "estilo",
+        "style",
+        "diseñador",
+        "designer",
+        "marca",
+        "brand",
+        "pasarela",
+        "runway",
+        "semana de la moda",
+        "fashion week",
+        "look",
+        "outfit",
+        "glamour",
+        "elegancia",
+        "chic",
+        "noticias de moda",
+        "fashion news"
+      ],
+      "responses": [
+        "👗 Aquí tienes las últimas noticias de moda:",
+        "✨ Te muestro las novedades más recientes del mundo fashion:",
+        "👠 Estas son las noticias de moda más actuales:"
+      ]
+    },
+    {
+      "tag": "Animales",
+      "patterns": [
+        "animales",
+        "animals",
+        "mascotas",
+        "pets",
+        "perro",
+        "perros",
+        "dog",
+        "dogs",
+        "gato",
+        "gatos",
+        "cat",
+        "cats",
+        "fauna",
+        "wildlife",
+        "vida silvestre",
+        "conservación",
+        "conservation",
+        "zoológico",
+        "zoo",
+        "veterinario",
+        "vet",
+        "especies",
+        "species",
+        "biodiversidad",
+        "biodiversity",
+        "extinción",
+        "extinction",
+        "protección animal",
+        "animal protection",
+        "naturaleza",
+        "nature",
+        "ecosistema",
+        "ecosystem",
+        "noticias de animales",
+        "animal news"
+      ],
+      "responses": [
+        "🐾 Aquí tienes las últimas noticias sobre animales:",
+        "🦁 Te muestro las novedades más recientes del reino animal:",
+        "🐱 Estas son las noticias de animales más actuales:"
+      ]
+    },
+    {
+      "tag": "Judiciales",
+      "patterns": [
+        "judicial",
+        "judiciales",
+        "legal",
+        "ley",
+        "laws",
+        "tribunal",
+        "court",
+        "juez",
+        "judge",
+        "justicia",
+        "justice",
+        "abogado",
+        "lawyer",
+        "crimen",
+        "crime",
+        "delito",
+        "delitos",
+        "investigación",
+        "investigation",
+        "policía",
+        "police",
+        "arrestar",
+        "arrest",
+        "detener",
+        "fiscal",
+        "prosecutor",
+        "sentencia",
+        "sentence",
+        "veredicto",
+        "verdict",
+        "caso",
+        "case",
+        "demanda",
+        "lawsuit",
+        "corrupción",
+        "corruption",
+        "noticias judiciales",
+        "legal news"
+      ],
+      "responses": [
+        "⚖️ Aquí tienes las últimas noticias judiciales:",
+        "🏛️ Te muestro las novedades más recientes del ámbito legal:",
+        "📜 Estas son las noticias judiciales más actuales:"
+      ]
+    },
+    {
+      "tag": "sentimiento_positivo",
+      "patterns": [
+        "buenas noticias",
+        "noticias positivas",
+        "noticias alegres",
+        "noticias felices",
+        "dame buenas noticias",
+        "quiero noticias positivas",
+        "noticias que me alegren",
+        "algo bueno",
+        "noticias optimistas",
+        "good news"
+      ],
+      "responses": [
+        "😊 Aquí tienes noticias positivas:",
+        "🌟 Te muestro noticias que te alegrarán:",
+        "✨ Estas son noticias optimistas para ti:"
+      ]
+    },
+    {
+      "tag": "sentimiento_negativo",
+      "patterns": [
+        "malas noticias",
+        "noticias tristes",
+        "noticias negativas",
+        "dame malas noticias",
+        "quiero noticias tristes",
+        "noticias deprimentes",
+        "algo malo",
+        "noticias pesimistas",
+        "bad news"
+      ],
+      "responses": [
+        "😔 Aquí tienes noticias con tono más serio:",
+        "📰 Te muestro noticias de actualidad que requieren atención:",
+        "⚠️ Estas son noticias importantes aunque no sean positivas:"
+      ]
+    },
+    {
+      "tag": "noticias_generales",
+      "patterns": [
+        "noticias",
+        "news",
+        "qué pasa",
+        "que ha pasado",
+        "actualidad",
+        "últimas noticias",
+        "latest news",
+        "cuéntame las noticias",
+        "qué hay de nuevo",
+        "what's new",
+        "información",
+        "info",
+        "novedades",
+        "dime qué pasa"
+      ],
+      "responses": [
+        "📰 Te muestro las últimas noticias:",
+        "📺 Aquí tienes un resumen de la actualidad:",
+        "🗞️ Estas son las noticias más recientes:",
+        "📡 Te traigo las novedades del día:"
+      ]
+    },
+    {
+      "tag": "ayuda",
+      "patterns": [
+        "ayuda",
+        "help",
+        "no entiendo",
+        "qué puedes hacer",
+        "what can you do",
+        "cómo funciona",
+        "how does it work",
+        "instrucciones",
+        "instructions",
+        "comandos",
+        "commands"
+      ],
+      "responses": [
+        "¡Claro! Puedo ayudarte con:\n• Noticias por categoría (deportes, tecnología, moda, animales, judiciales)\n• Noticias por sentimiento (positivas, negativas)\n• Noticias generales\n\n¿Qué te interesa?",
+        "¡Por supuesto! Puedo mostrarte noticias sobre diferentes temas. Pregúntame por deportes, tecnología, moda, animales, temas judiciales, o simplemente pide 'noticias' para ver las últimas.",
+        "¡Estoy aquí para ayudarte! Puedo buscar noticias específicas según tus intereses. ¿Hay algún tema particular que te gustaría explorar?"
+      ]
+    },
+    {
+      "tag": "no_entiendo",
+      "patterns": [],
+      "responses": [
+        "No estoy seguro de entender. ¿Podrías ser más específico? Puedo ayudarte con noticias sobre deportes, tecnología, moda, animales, temas judiciales, o noticias generales.",
+        "Hmm, no comprendo completamente. ¿Te gustaría que te muestre las últimas noticias o hay algún tema específico que te interese?",
+        "Disculpa, no entendí bien tu consulta. ¿Podrías reformular tu pregunta? Puedo ayudarte con diferentes tipos de noticias."
+      ]
+    }
+  ]
+}

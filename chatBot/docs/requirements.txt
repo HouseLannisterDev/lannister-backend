@@ -1,0 +1,22 @@
+# chatBot/requirements.txt
+# Dependencias para el ChatBot con IA
+
+# Machine Learning y Neural Networks
+tensorflow>=2.13.0
+keras>=2.13.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Procesamiento de texto
+nltk>=3.8.1
+textblob>=0.17.1
+
+# Análisis de datos
+pandas>=2.0.0
+
+# Utilidades
+python-dateutil>=2.8.0
+
+# Para desarrollo (opcionales)
+matplotlib>=3.7.0  # Para visualizar gráficas de entrenamiento
+seaborn>=0.12.0   # Para mejores visualizaciones

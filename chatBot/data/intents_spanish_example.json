@@ -1,0 +1,199 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": [
+        "hola",
+        "buenos días",
+        "buenas tardes",
+        "buenas noches",
+        "saludos",
+        "qué tal",
+        "cómo estás",
+        "hey",
+        "holi"
+      ],
+      "responses": [
+        "¡Hola! Soy tu asistente de noticias. ¿En qué puedo ayudarte?",
+        "¡Buenos días! ¿Qué noticias te interesan hoy?",
+        "¡Hola! Estoy aquí para ayudarte con las últimas noticias.",
+        "¡Saludos! ¿Sobre qué tema quieres conocer las noticias?"
+      ]
+    },
+    {
+      "tag": "despedida",
+      "patterns": [
+        "adiós",
+        "nos vemos",
+        "hasta luego",
+        "chao",
+        "gracias",
+        "bye",
+        "hasta pronto",
+        "me voy"
+      ],
+      "responses": [
+        "¡Hasta luego! Que tengas un buen día.",
+        "¡Nos vemos! Vuelve cuando quieras más noticias.",
+        "¡Adiós! Estaré aquí cuando necesites información.",
+        "¡Hasta pronto! Cuídate mucho."
+      ]
+    },
+    {
+      "tag": "politica",
+      "patterns": [
+        "noticias de política",
+        "qué pasa en política",
+        "últimas noticias políticas",
+        "información sobre política",
+        "cuéntame de política",
+        "novedades políticas",
+        "noticias del gobierno",
+        "qué dice el presidente",
+        "elecciones",
+        "congreso"
+      ],
+      "responses": [
+        "Aquí tienes las últimas noticias políticas que tengo disponibles.",
+        "Las noticias políticas más relevantes del momento.",
+        "Te muestro lo más destacado en política nacional e internacional.",
+        "Estas son las principales noticias del ámbito político."
+      ]
+    },
+    {
+      "tag": "deportes",
+      "patterns": [
+        "noticias de deportes",
+        "qué pasa en deportes",
+        "últimas noticias deportivas",
+        "información sobre deportes",
+        "cuéntame de deportes",
+        "novedades deportivas",
+        "noticias de fútbol",
+        "resultados deportivos",
+        "partidos",
+        "goles"
+      ],
+      "responses": [
+        "Aquí están las últimas noticias deportivas.",
+        "Te muestro las novedades más importantes del mundo del deporte.",
+        "Las noticias deportivas más destacadas del momento.",
+        "Esto es lo que está pasando en el mundo deportivo."
+      ]
+    },
+    {
+      "tag": "economia",
+      "patterns": [
+        "noticias de economía",
+        "qué pasa en economía",
+        "últimas noticias económicas",
+        "información sobre economía",
+        "cuéntame de economía",
+        "novedades económicas",
+        "finanzas",
+        "bolsa",
+        "dólar",
+        "inflación"
+      ],
+      "responses": [
+        "Las últimas noticias económicas y financieras.",
+        "Te comparto la información económica más relevante.",
+        "Aquí tienes las novedades del sector económico.",
+        "Las noticias financieras más importantes del momento."
+      ]
+    },
+    {
+      "tag": "tecnologia",
+      "patterns": [
+        "noticias de tecnología",
+        "qué pasa en tecnología",
+        "últimas noticias tecnológicas",
+        "información sobre tecnología",
+        "cuéntame de tecnología",
+        "novedades tecnológicas",
+        "inteligencia artificial",
+        "tech",
+        "software",
+        "innovación"
+      ],
+      "responses": [
+        "Las últimas noticias del mundo tecnológico.",
+        "Te muestro las innovaciones y novedades tech más importantes.",
+        "Aquí están las noticias más relevantes de tecnología.",
+        "Las novedades tecnológicas que están marcando tendencia."
+      ]
+    },
+    {
+      "tag": "salud",
+      "patterns": [
+        "noticias de salud",
+        "qué pasa en salud",
+        "últimas noticias de salud",
+        "información sobre salud",
+        "cuéntame de salud",
+        "novedades de salud",
+        "medicina",
+        "hospital",
+        "enfermedad",
+        "vacuna"
+      ],
+      "responses": [
+        "Las últimas noticias relacionadas con la salud.",
+        "Te comparto la información médica y de salud más relevante.",
+        "Aquí tienes las novedades del sector salud.",
+        "Las noticias de salud y medicina más importantes."
+      ]
+    },
+    {
+      "tag": "busqueda_general",
+      "patterns": [
+        "buscar noticias",
+        "qué noticias hay",
+        "últimas noticias",
+        "noticias de hoy",
+        "qué está pasando",
+        "noticias recientes",
+        "novedades",
+        "actualidad",
+        "qué hay de nuevo",
+        "cuéntame las noticias"
+      ],
+      "responses": [
+        "¿Sobre qué tema específico te gustaría conocer noticias?",
+        "Tengo noticias de varios temas: política, economía, deportes, tecnología, salud. ¿Cuál te interesa?",
+        "Puedo ayudarte con noticias de diferentes categorías. ¿Qué tema prefieres?",
+        "¿Hay algún tema en particular que te interese?",
+        "Te puedo dar noticias sobre política, deportes, economía, tecnología, salud y más. ¿Qué prefieres?"
+      ]
+    },
+    {
+      "tag": "ayuda",
+      "patterns": [
+        "ayuda",
+        "qué puedes hacer",
+        "cómo funciona",
+        "qué sabes hacer",
+        "ayúdame",
+        "no entiendo",
+        "instrucciones",
+        "comandos"
+      ],
+      "responses": [
+        "Puedo ayudarte con noticias sobre diferentes temas como política, deportes, economía, tecnología y salud. Solo pregúntame sobre el tema que te interese.",
+        "Soy un asistente de noticias. Puedes preguntarme sobre las últimas noticias de cualquier categoría.",
+        "Estoy aquí para darte información sobre noticias actuales. Pregúntame sobre política, deportes, economía, tecnología, salud o cualquier tema que te interese.",
+        "Mi función es proporcionarte las últimas noticias. Dime sobre qué tema quieres estar informado."
+      ]
+    },
+    {
+      "tag": "no_entiendo",
+      "patterns": [],
+      "responses": [
+        "No estoy seguro de entender. ¿Podrías ser más específico sobre qué noticias buscas?",
+        "Disculpa, no entendí bien. Puedo ayudarte con noticias de política, economía, deportes, tecnología y más.",
+        "No comprendí tu solicitud. ¿Puedes decirme sobre qué tema quieres noticias?",
+        "Lo siento, no entendí. Intenta preguntarme sobre noticias de un tema específico como política, deportes, etc."
+      ]
+    }
+  ]
+}
