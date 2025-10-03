@@ -24,23 +24,26 @@ def ensure_indexes():
 def insert_many_news(news_list: List[dict]):
     """
     Inserta varias noticias en Mongo.
-    - Normaliza date_publish (str ISO → datetime).
+    - Mantiene date_publish como string ISO para compatibilidad con Atlas.
     - Se asegura que scraped_at exista.
     - Ignora duplicados por url (BulkWriteError con code 11000).
     """
     for item in news_list:
-        # Normalizar date_publish
+        # Mantener date_publish como string (requerido por esquema de Atlas)
         iso = item.get("date_publish")
         if isinstance(iso, str):
+            # Validar formato pero mantener como string
             try:
-                item["date_publish"] = datetime.fromisoformat(
-                    iso.replace("Z", "+00:00")
-                )
+                datetime.fromisoformat(iso.replace("Z", "+00:00"))
+                # Si es válido, lo dejamos como string
             except Exception:
-                # Si ya es válido o None, lo dejamos
+                # Si no es válido, lo dejamos como está
                 pass
+        elif iso is None:
+            # Si date_publish es None, usar la fecha de scraping como string
+            item["date_publish"] = datetime.utcnow().isoformat()
 
-        # Asegurar scraped_at
+        # Asegurar scraped_at como datetime
         if not item.get("scraped_at"):
             item["scraped_at"] = datetime.utcnow()
 
