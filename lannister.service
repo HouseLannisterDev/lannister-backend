@@ -1,0 +1,19 @@
+[Unit]
+Description=Lannister Backend Gunicorn daemon
+After=network.target
+
+[Service]
+User=lannister
+Group=www-data
+WorkingDirectory=/home/lannister/lannister-backend
+Environment="PATH=/home/lannister/lannister-backend/.venv/bin"
+ExecStart=/home/lannister/lannister-backend/.venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/home/lannister/lannister-backend/lannister.sock \
+          lannister_news_api.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
