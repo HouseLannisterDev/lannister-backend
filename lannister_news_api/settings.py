@@ -9,6 +9,10 @@ import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
+
+# Cargar archivo .env
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # =========================
 # Core / Env
 # =========================
@@ -74,19 +78,22 @@ TEMPLATES = [
 WSGI_APPLICATION = "lannister_news_api.wsgi.application"
 
 # =========================
-# Database (MySQL)
+# Database (AWS RDS MySQL)
 # =========================
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": os.getenv("MYSQL_DB", "lannister_news"),
-        "USER": os.getenv("MYSQL_USER", "lannister_user"),
-        "PASSWORD": os.getenv("MYSQL_PASSWORD", "lannister_pwd"),
-        "HOST": os.getenv("MYSQL_HOST", "127.0.0.1"),
+        "USER": os.getenv("MYSQL_USER", "admin"),
+        "PASSWORD": os.getenv("MYSQL_PASSWORD", "root2025"),
+        "HOST": os.getenv("MYSQL_HOST", "database-1.cpcimk2ikn91.sa-east-1.rds.amazonaws.com"),
         "PORT": os.getenv("MYSQL_PORT", "3306"),
         "OPTIONS": {
             "charset": "utf8mb4",
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+            "connect_timeout": 60,
+            "read_timeout": 60,
+            "write_timeout": 60,
         },
     }
 }
