@@ -1,0 +1,55 @@
+# Dockerfile específico para producción en AWS
+FROM python:3.13-slim
+
+# Variables de build
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    default-libmysqlclient-dev \
+    build-essential \
+    curl \
+    nginx \
+    supervisor \
+    && rm -rf /var/lib/apt/lists/*
+
+# Establecer directorio de trabajo
+WORKDIR /app
+
+# Copiar requirements e instalar dependencias Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install gunicorn
+
+# Copiar código de aplicación
+COPY . .
+
+# Recolectar archivos estáticos
+RUN python manage.py collectstatic --noinput --clear
+
+# Configurar nginx
+COPY deploy/nginx.conf /etc/nginx/sites-available/default
+RUN rm -f /etc/nginx/sites-enabled/default && \
+    ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Configurar supervisor
+COPY deploy/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Crear usuario no-root
+RUN adduser --disabled-password --gecos '' appuser && \
+    chown -R appuser:appuser /app && \
+    chown -R appuser:appuser /var/log/nginx && \
+    chown -R appuser:appuser /var/lib/nginx
+
+# Crear directorios necesarios
+RUN mkdir -p /var/log/gunicorn && \
+    chown -R appuser:appuser /var/log/gunicorn
+
+USER appuser
+
+# Exponer puerto 80
+EXPOSE 80
+
+# Comando de inicio con supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
