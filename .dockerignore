@@ -1,0 +1,2 @@
+# Excluir checkpoints de entrenamiento y archivos pesados innecesarios para producción
+chatbot/faq_model_2/checkpoint-384/
