@@ -75,7 +75,10 @@ def get_news(
     if source:
         q["source_domain"] = source
     if start_date and end_date:
-        q["date_publish"] = {"$gte": start_date, "$lte": end_date}
+        # Convertir datetime a string ISO para comparar correctamente en MongoDB
+        start_iso = start_date.isoformat()
+        end_iso = end_date.isoformat()
+        q["date_publish"] = {"$gte": start_iso, "$lte": end_iso}
     return list(collection.find(q).sort("date_publish", -1).limit(int(limit)))
 
 def get_random_news(limit: int = 20, category: Optional[str] = None):
