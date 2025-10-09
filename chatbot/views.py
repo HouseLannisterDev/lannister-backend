@@ -39,8 +39,15 @@ class ChatbotView(View):
             )
         except Exception as e:
             import traceback
+            tb_str = traceback.format_exc()
+            try:
+                with open("/tmp/chatbot_error.log", "a") as f:
+                    f.write("\n--- Exception ---\n")
+                    f.write(tb_str)
+            except Exception as file_err:
+                pass
             print(">>> [ERROR] Excepción en ChatbotView:")
-            traceback.print_exc()
+            print(tb_str)
             return JsonResponse(
                 {"error": "Error interno en el chatbot."},
                 status=500,
