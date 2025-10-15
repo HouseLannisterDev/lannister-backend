@@ -59,7 +59,7 @@ def get_news_view(request):
     GET /news/?q=<categoria>&source=<dominio>&limit=50&start=YYYY-MM-DD&end=YYYY-MM-DD
     - q: categoría (Deportes, Judiciales, Moda, Tecnología, Animales)
     - source: filtra por dominio de origen
-    - start/end: rango de fechas (si no envías, usa último año)
+    - start/end: rango de fechas (si no envías, NO se aplica filtro de fecha)
     - limit: cantidad a devolver (default 50)
     """
     category = request.GET.get("q")
@@ -68,7 +68,16 @@ def get_news_view(request):
 
     start = _parse_date(request.GET.get("start"))
     end = _parse_date(request.GET.get("end"))
-    start_dt, end_dt = _default_range_if_missing(start, end)
+    
+    # Solo aplicar filtro de fecha si ambos parámetros están presentes
+    start_dt = start
+    end_dt = end
+    if start and not end:
+        # Si solo hay start, usar start hasta ahora
+        end_dt = datetime.utcnow()
+    elif end and not start:
+        # Si solo hay end, usar desde hace un año hasta end
+        start_dt = end - timedelta(days=365)
 
     docs = fetch_news(category, source, start_dt, end_dt, limit)
     return JsonResponse(
