@@ -167,54 +167,18 @@ AUTH_USER_MODEL = "users.CustomUser"
 # =========================
 # CORS / CSRF
 # =========================
-INSTALLED_APPS = [
-    "corsheaders",
-    # tus demás apps...
-]
-
-MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # ← debe ir primero
-    "django.middleware.security.SecurityMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    # demás middlewares...
-]
-
-ALLOWED_HOSTS = [
-    "api.lannister-news.com",
-    "lannister-news.com",
-    "www.lannister-news.com",
-    "localhost",
-    "127.0.0.1",
-]
-
-# --- CORS ---
-CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-    "https://www.lannister-news.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_HEADERS = [
-    "accept", "accept-encoding", "authorization", "content-type",
-    "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with",
-]
-CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
-
-# --- CSRF ---
 CSRF_TRUSTED_ORIGINS = [
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-    "https://www.lannister-news.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
-
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SAMESITE = "None"
-
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_COOKIE_HTTPONLY = False
 
 # =========================
 # MongoDB
