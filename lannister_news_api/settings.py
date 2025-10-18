@@ -220,6 +220,7 @@ NEWS_MAX_RETRIES = int(os.getenv("NEWS_MAX_RETRIES", "3"))
 # =========================
 # CHATBOT CONFIG
 # =========================
+env = environ.Env()
 FAQ_PATH = env("FAQ_PATH", default=os.path.join(BASE_DIR, "chatbot/faqs/faqs.json"))
 FAQ_NORMALIZED_PATH = env("FAQ_NORMALIZED_PATH", default=os.path.join(BASE_DIR, "chatbot/faqs/faqs_normalized.json"))
 FALLOVER_THRESHOLD = env.float("FALLOVER_THRESHOLD", default=0.08)
