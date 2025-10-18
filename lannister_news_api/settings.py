@@ -48,6 +48,18 @@ print("USANDO ESTE settings.py DE LANNISTER")
 Django settings for lannister_news_api project.
 """
 
+# =========================
+# ALLOWED_HOSTS
+# =========================
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "lannister-news.com",
+    "app.lannister-news.com",
+    "www.lannister-news.com",
+    "develop.d168j68zix66ce.amplifyapp.com",
+]
+
 from pathlib import Path
 import os
 import environ
