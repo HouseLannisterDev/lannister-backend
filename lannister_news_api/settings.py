@@ -1,6 +1,6 @@
-# =========================
-# CORS / CSRF / COOKIES
-# =========================
+###############################
+# FINAL CORS / CSRF / COOKIES #
+###############################
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -27,7 +27,6 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https:\/\/.*\.d168j68zix66ce\.amplifyapp\.com$",
     r"^https:\/\/.*\.amplifyapp\.com$",
 ]
-
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -41,7 +40,6 @@ CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_DOMAIN = ".lannister-news.com"
-
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_DOMAIN = ".lannister-news.com"
@@ -55,40 +53,7 @@ import os
 import environ
 
 
-# =========================
-# CORS / CSRF / COOKIES
-# =========================
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-]
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https:\/\/.*\.d168j68zix66ce\.amplifyapp\.com$",
-    r"^https:\/\/.*\.amplifyapp\.com$",
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-]
-CSRF_COOKIE_NAME = "csrftoken"
-CSRF_COOKIE_HTTPONLY = False
-
-# --- COOKIES CROSS-ORIGIN ---
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = "None"
-# Opcional, pero recomendado para cross-domain:
-SESSION_COOKIE_DOMAIN = ".lannister-news.com"
-CSRF_COOKIE_DOMAIN = ".lannister-news.com"
+...existing code...
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -226,39 +191,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # =========================
 AUTH_USER_MODEL = "users.CustomUser"
 
-# =========================
-# CORS / CSRF CONFIG
-# =========================
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    "https://develop.d168j68zix66ce.amplifyapp.com",  # Amplify frontend
-    "https://lannister-news.com",
-    "https://www.lannister-news.com",
-]
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOW_HEADERS = [
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-]
-CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-    "https://www.lannister-news.com",
-]
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SAMESITE = "None"
+...existing code...
 
 # =========================
 # MONGODB
