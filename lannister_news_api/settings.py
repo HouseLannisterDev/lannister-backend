@@ -6,31 +6,41 @@ from pathlib import Path
 import os
 import environ
 
-# =========================
-# BASE / ENV
-# =========================
-BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
-SECRET_KEY = os.getenv(
-    "DJANGO_SECRET_KEY",
-    "django-insecure-!uwquq*ppxw@0c67nzmvvcm&tzd2mmtkgzjrxr$r0c1i=1%d2-",
-)
-DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
-ALLOWED_HOSTS = [
-    "api.lannister-news.com",
-    "lannister-news.com",
-    "www.lannister-news.com",
-    "localhost",
-    "127.0.0.1",
+# =========================
+# CORS / CSRF / COOKIES
+# =========================
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://develop.d168j68zix66ce.amplifyapp.com",
+    "https://lannister-news.com",
 ]
 
-# =========================
-# INSTALLED APPS
-# =========================
-INSTALLED_APPS = [
-    # Django core
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https:\/\/.*\.d168j68zix66ce\.amplifyapp\.com$",
+    r"^https:\/\/.*\.amplifyapp\.com$",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://develop.d168j68zix66ce.amplifyapp.com",
+    "https://lannister-news.com",
+]
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_COOKIE_HTTPONLY = False
+
+# --- COOKIES CROSS-ORIGIN ---
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+# Opcional, pero recomendado para cross-domain:
+SESSION_COOKIE_DOMAIN = ".lannister-news.com"
+CSRF_COOKIE_DOMAIN = ".lannister-news.com"
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
