@@ -1,3 +1,51 @@
+# =========================
+# CORS / CSRF / COOKIES
+# =========================
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://develop.d168j68zix66ce.amplifyapp.com",
+    "https://lannister-news.com",
+    "https://app.lannister-news.com",
+    "https://www.lannister-news.com",
+]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https:\/\/.*\.d168j68zix66ce\.amplifyapp\.com$",
+    r"^https:\/\/.*\.amplifyapp\.com$",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://develop.d168j68zix66ce.amplifyapp.com",
+    "https://lannister-news.com",
+    "https://app.lannister-news.com",
+    "https://www.lannister-news.com",
+]
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_DOMAIN = ".lannister-news.com"
+
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_DOMAIN = ".lannister-news.com"
+print("USANDO ESTE settings.py DE LANNISTER")
 """
 Django settings for lannister_news_api project.
 """
