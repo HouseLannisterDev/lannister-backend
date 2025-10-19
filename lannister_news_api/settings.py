@@ -7,6 +7,7 @@ CORS_ALLOW_ALL_ORIGINS = False
 # DEBUG (activar para diagnóstico)
 # =========================
 DEBUG = True
+SECRET_KEY = "p7!v8w@r2$k1z#x6b9q4t0s5e3u8l1m0c2d7f6g5h4j3k2l1"
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
