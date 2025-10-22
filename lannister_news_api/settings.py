@@ -136,7 +136,7 @@ DATABASES = {
         "NAME": os.getenv("MYSQL_DB", "lannister_news"),
         "USER": os.getenv("MYSQL_USER", "admin"),
         "PASSWORD": os.getenv("MYSQL_PASSWORD", "root2025"),
-        "HOST": os.getenv("MYSQL_HOST", "database-1.cpcimk2ikn91.sa-east-1.rds.amazonaws.com"),
+            "HOST": os.getenv("MYSQL_HOST", "lannister-mysql-db.cb0gcymssl9l.sa-east-1.rds.amazonaws.com"),
         "PORT": os.getenv("MYSQL_PORT", "3306"),
         "OPTIONS": {
             "charset": "utf8mb4",
