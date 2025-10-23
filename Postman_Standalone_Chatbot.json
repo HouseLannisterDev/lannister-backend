@@ -1,0 +1,351 @@
+{
+  "info": {
+    "name": "Lannister Chatbot - Standalone Server",
+    "_postman_id": "standalone-chatbot-test",
+    "description": "Testing suite for standalone chatbot server (no Django/MySQL required)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["health"]
+        },
+        "description": "Verify server is running"
+      }
+    },
+    {
+      "name": "2. Test FAQ - Greeting",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Hola\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        },
+        "description": "Test greeting FAQ"
+      }
+    },
+    {
+      "name": "3. Test FAQ - What is Lannister",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"¿Qué es Lannister News?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "4. News Search - Sports",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Dame noticias de deportes\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        },
+        "description": "Should detect FAQ #18 (news search) with high confidence"
+      }
+    },
+    {
+      "name": "5. News Search - Technology",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Muéstrame noticias de tecnología\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "6. News Search - Fashion",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Quiero ver noticias de moda\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "7. News Search - Animals",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Dame noticias sobre animales\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "8. News Search - English",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Show me the latest sports news\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        },
+        "description": "Test English news search"
+      }
+    },
+    {
+      "name": "9. Edge Case - Gibberish",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"asdfghjkl\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        },
+        "description": "Should return fallback response"
+      }
+    },
+    {
+      "name": "10. Edge Case - Out of Domain",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"¿Cuál es el sentido de la vida?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "11. FAQ - Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"¿Cómo me registro?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "12. FAQ - Categories",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"¿Qué categorías de noticias hay?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "13. News - Variation 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"busco noticias deportivas\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "14. News - Variation 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"necesito ver tech news\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    },
+    {
+      "name": "15. Goodbye",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Adiós\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/chatbot",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["chatbot"]
+        }
+      }
+    }
+  ]
+}
