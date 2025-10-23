@@ -18,6 +18,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://app.lannister-news.com",
     "https://www.lannister-news.com",
     "http://www.lannister-news.com",  # HTTP para desarrollo
+    "https://api.lannister-news.com",  # Backend API
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -45,15 +46,16 @@ CSRF_TRUSTED_ORIGINS = [
     "https://app.lannister-news.com",
     "https://www.lannister-news.com",
     "http://www.lannister-news.com",  # HTTP para desarrollo
+    "https://api.lannister-news.com",  # Backend API
 ]
 CSRF_COOKIE_NAME = "csrftoken"
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_DOMAIN = None  # None permite que funcione con cualquier dominio (Amplify y personalizado)
+CSRF_COOKIE_DOMAIN = ".lannister-news.com"  # Permite compartir cookies entre subdominios
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_DOMAIN = None  # None permite que funcione con cualquier dominio (Amplify y personalizado)
+SESSION_COOKIE_DOMAIN = ".lannister-news.com"  # Permite compartir cookies entre subdominios
 print("USANDO ESTE settings.py DE LANNISTER")
 """
 Django settings for lannister_news_api project.
