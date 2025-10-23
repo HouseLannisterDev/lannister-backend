@@ -1,0 +1,456 @@
+{
+  "info": {
+    "name": "Lannister News - Chatbot API",
+    "description": "Colección de pruebas para el chatbot con búsqueda de noticias",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "FAQs Estáticas",
+      "item": [
+        {
+          "name": "¿Qué es Lannister News?",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"¿Qué es Lannister News?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Saludo en español",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"hola\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clasificación de noticias",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"¿Cómo clasifican las noticias?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Equipo desarrollador",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"quién desarrolló esto\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualización de noticias",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"cada cuánto se actualizan las noticias\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "FAQ en inglés - What is Lannister News?",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"What is Lannister News?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Búsqueda de Noticias",
+      "item": [
+        {
+          "name": "Noticias de Deportes (ES)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"dame noticias de deportes\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Noticias de Moda (ES)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"muéstrame moda\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Noticias de Tecnología (ES)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"quiero ver tecnología\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Noticias de Animales (ES)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"últimas de animales\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Noticias Judiciales (ES)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"búscame judiciales\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sports News (EN)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"give me sports news\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fashion News (EN)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"show me fashion\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tech News (EN)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"i want to see tech news\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Casos Edge",
+      "item": [
+        {
+          "name": "Pregunta vacía",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pregunta fuera de dominio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"¿Cuánto es 2 + 2?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pregunta muy larga",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Hola quiero saber si me puedes dar información sobre las últimas noticias de deportes que tengan que ver con fútbol especialmente y también me gustaría saber cómo funcionan las clasificaciones de las noticias en la plataforma\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sin especificar categoría",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"muéstrame noticias\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/chatbot/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["chatbot", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
