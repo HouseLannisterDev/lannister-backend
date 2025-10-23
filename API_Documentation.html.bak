@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentación API - Lannister Backend</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #34495e;
+        border-bottom: 2px solid #ecf0f1;
+        padding-bottom: 5px;
+        margin-top: 30px;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      .endpoint {
+        background: #f8f9fa;
+        padding: 15px;
+        border-left: 4px solid #3498db;
+        margin: 10px 0;
+      }
+      .method-get {
+        color: #27ae60;
+        font-weight: bold;
+      }
+      .method-post {
+        color: #e74c3c;
+        font-weight: bold;
+      }
+      .code {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .json {
+        background: #34495e;
+        color: #e8e8e8;
+        padding: 10px;
+        border-radius: 3px;
+      }
+      .url {
+        background: #3498db;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
+      }
+      .status {
+        background: #27ae60;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f8f9fa;
+      }
+      .toc {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .toc ul {
+        list-style-type: none;
+      }
+      .toc a {
+        text-decoration: none;
+        color: #3498db;
+      }
+      .highlight {
+        background: #fff3cd;
+        padding: 10px;
+        border-left: 4px solid #ffc107;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📚 DOCUMENTACIÓN COMPLETA DE APIS</h1>
+    <h2>Backend Lannister News - Desplegado en AWS</h2>
+
+    <div class="highlight">
+      <strong>Base URL:</strong> <span class="url">https://lannister-news.com</span
+      ><br />
+      <strong>HTTPS:</strong> <span style="color: #27ae60;">🔒 SSL/TLS Configurado con Let's Encrypt</span><br />
+      <strong>Dominio:</strong> <span class="url">lannister-news.com</span><br />
+      <strong>Fecha:</strong> 17 de octubre de 2025<br />
+      <strong>Estado:</strong>
+      <span class="status">✅ Completamente funcional con HTTPS</span>
+    </div>
+
+    <div class="toc">
+      <h3>📋 Tabla de Contenido</h3>
+      <ul>
+        <li><a href="#urls-completas">🔗 Listado Completo de URLs</a></li>
+        <li><a href="#resumen">🌟 Resumen del Sistema</a></li>
+        <li><a href="#news">📰 News Endpoints</a></li>
+        <li><a href="#chatbot">🤖 Chatbot Endpoints</a></li>
+        <li><a href="#users">👥 User Endpoints</a></li>
+        <li><a href="#ejemplos">🧪 Ejemplos para Postman</a></li>
+        <li><a href="#tecnico">🔧 Información Técnica</a></li>
+      </ul>
+    </div>
+
+    <div id="urls-completas">
+      <h2>🔗 LISTADO COMPLETO DE URLs DISPONIBLES</h2>
+
+      <div class="highlight">
+        <h3>📰 NEWS ENDPOINTS</h3>
+        <div style="font-family: monospace; line-height: 1.8">
+          <strong>Con prefijo /api/news/:</strong><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/api/news/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/api/news/sources/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/api/news/random/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url"
+            >https://lannister-news.com/api/news/section/{section}/</span
+          ><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/api/news/stats/</span><br />
+          <br />
+          <strong>Sin prefijo (compatibilidad):</strong><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/news/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/news/sources/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/news/random/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/news/section/{section}/</span
+          ><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/news/stats/</span><br />
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3>🤖 CHATBOT ENDPOINTS</h3>
+        <div style="font-family: monospace; line-height: 1.8">
+          <span class="method-post">POST</span>
+          <span class="url">https://lannister-news.com/api/chatbot/</span><br />
+          <span class="method-post">POST</span>
+          <span class="url">https://lannister-news.com/chatbot/</span>
+          <em>(compatibilidad)</em><br />
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3>👥 USER ENDPOINTS</h3>
+        <div style="font-family: monospace; line-height: 1.8">
+          <strong>Gestión de usuarios:</strong><br />
+          <span class="method-get">GET</span>/<span class="method-post"
+            >POST</span
+          >
+          <span class="url">https://lannister-news.com/api/users/</span><br />
+          <span class="method-get">GET</span>/<span class="method-post"
+            >PUT</span
+          >/<span class="method-post">DELETE</span>
+          <span class="url">https://lannister-news.com/api/users/{id}/</span><br />
+          <br />
+          <strong>Autenticación:</strong><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/api/users/auth/csrf/</span
+          ><br />
+          <span class="method-post">POST</span>
+          <span class="url">https://lannister-news.com/api/users/auth/login/</span
+          ><br />
+          <span class="method-post">POST</span>
+          <span class="url">https://lannister-news.com/api/users/auth/logout/</span
+          ><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/api/users/auth/me/</span
+          ><br />
+          <br />
+          <strong>Favoritos:</strong><br />
+          <span class="method-get">GET</span>/<span class="method-post"
+            >POST</span
+          >
+          <span class="url">https://lannister-news.com/api/users/favorites/</span
+          ><br />
+          <span class="method-get">GET</span>/<span class="method-post"
+            >PUT</span
+          >/<span class="method-post">DELETE</span>
+          <span class="url"
+            >https://lannister-news.com/api/users/favorites/{id}/</span
+          ><br />
+          <br />
+          <strong>Sin prefijo (compatibilidad):</strong><br />
+          <span class="method-get">GET</span>/<span class="method-post"
+            >POST</span
+          >
+          <span class="url">https://lannister-news.com/users/</span><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/users/auth/csrf/</span><br />
+          <span class="method-post">POST</span>
+          <span class="url">https://lannister-news.com/users/auth/login/</span><br />
+          <span class="method-post">POST</span>
+          <span class="url">https://lannister-news.com/users/auth/logout/</span
+          ><br />
+          <span class="method-get">GET</span>
+          <span class="url">https://lannister-news.com/users/auth/me/</span><br />
+          <span class="method-get">GET</span>/<span class="method-post"
+            >POST</span
+          >
+          <span class="url">https://lannister-news.com/users/favorites/</span><br />
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3>📋 EJEMPLOS CON PARÁMETROS</h3>
+        <div style="font-family: monospace; line-height: 1.8">
+          <strong>Filtros de noticias:</strong><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/?q=deportes&limit=10</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/?q=tecnologia&limit=5</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/?source=ELTIEMPO.COM&limit=20</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/?start=2025-10-01&end=2025-10-14</span
+          ><br />
+          <br />
+          <strong>Noticias aleatorias:</strong><br />
+          <span class="url">https://lannister-news.com/api/news/random/?limit=3</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/random/?limit=10</span
+          ><br />
+          <br />
+          <strong>Secciones específicas:</strong><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/section/deportes/</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/section/tecnologia/</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/section/politica/</span
+          ><br />
+          <span class="url"
+            >https://lannister-news.com/api/news/section/economia/</span
+          ><br />
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3>🎯 URLs LISTAS PARA COPIAR Y PEGAR EN POSTMAN</h3>
+        <div
+          style="
+            font-family: monospace;
+            line-height: 2;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+          "
+        >
+          <strong style="color: #3498db">NEWS:</strong><br />
+          https://lannister-news.com/api/news/<br />
+          https://lannister-news.com/api/news/sources/<br />
+          https://lannister-news.com/api/news/random/<br />
+          https://lannister-news.com/api/news/stats/<br />
+          <br />
+          <strong style="color: #e74c3c">CHATBOT:</strong><br />
+          https://lannister-news.com/api/chatbot/<br />
+          <br />
+          <strong style="color: #27ae60">USERS:</strong><br />
+          https://lannister-news.com/api/users/<br />
+          https://lannister-news.com/api/users/auth/login/<br />
+          https://lannister-news.com/api/users/auth/me/<br />
+          https://lannister-news.com/api/users/favorites/<br />
+        </div>
+      </div>
+    </div>
+
+    <div id="resumen">
+      <h2>🌟 RESUMEN DEL SISTEMA</h2>
+      <ul>
+        <li><strong>Servidor:</strong> AWS EC2 t3.large con Elastic IP</li>
+        <li>
+          <strong>Base de Datos:</strong> MongoDB Atlas + MySQL RDS + Redis
+        </li>
+        <li>
+          <strong>Tecnologías:</strong> Django 5.2.5, Docker, ML con
+          Transformers
+        </li>
+        <li><strong>Total Noticias:</strong> 1,024 documentos</li>
+        <li><strong>Fuentes:</strong> 12 medios colombianos</li>
+        <li>
+          <strong>Características:</strong> Machine Learning, Análisis de
+          Sentimiento, Chatbot
+        </li>
+      </ul>
+    </div>
+
+    <div id="news">
+      <h2>📰 NEWS ENDPOINTS</h2>
+
+      <div class="endpoint">
+        <h3><span class="method-get">GET</span> /api/news/</h3>
+        <p>
+          <strong>Descripción:</strong> Obtener lista de noticias con filtros
+        </p>
+
+        <h4>Parámetros:</h4>
+        <table>
+          <tr>
+            <th>Parámetro</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+          </tr>
+          <tr>
+            <td>q</td>
+            <td>string</td>
+            <td>Filtro por categoría/tema</td>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>int</td>
+            <td>Número máximo de resultados</td>
+          </tr>
+          <tr>
+            <td>start</td>
+            <td>date</td>
+            <td>Fecha inicio (YYYY-MM-DD)</td>
+          </tr>
+          <tr>
+            <td>end</td>
+            <td>date</td>
+            <td>Fecha fin (YYYY-MM-DD)</td>
+          </tr>
+          <tr>
+            <td>source</td>
+            <td>string</td>
+            <td>Filtro por fuente específica</td>
+          </tr>
+        </table>
+
+        <h4>Ejemplo:</h4>
+        <div class="code">
+          GET https://lannister-news.com/api/news/?q=deportes&limit=10
+        </div>
+
+        <h4>Respuesta:</h4>
+        <div class="json">
+          [ { "_id": "68e0546c26f154071ba92437", "title": "Título de la
+          noticia", "description": "Descripción breve...", "maintext": "Texto
+          completo de la noticia...", "authors": ["Nombre del autor"],
+          "category": "Deportes", "date_publish": "2025-10-03T22:55:40.135808",
+          "source_domain": "ELHERALDO.CO", "url": "https://ejemplo.com/noticia",
+          "sentiment": { "label": "NEUTRAL", "score": 0.0, "compound": 0.0,
+          "lang": "es" }, "scraped_at": "2025-10-03T17:53:52.670000" } ]
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3><span class="method-get">GET</span> /api/news/sources/</h3>
+        <p>
+          <strong>Descripción:</strong> Obtener lista de fuentes disponibles
+        </p>
+
+        <h4>Ejemplo:</h4>
+        <div class="code">GET https://lannister-news.com/api/news/sources/</div>
+
+        <h4>Respuesta:</h4>
+        <div class="json">
+          { "sources": [ "Blu Radio", "Caracol TV", "City Tv", "ELHERALDO.CO",
+          "ELTIEMPO.COM", "Edictos El Tiempo", "El Espectador", "Infobae",
+          "Pulzo", "RCN Radio", "Semana.com", "W Radio" ] }
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3><span class="method-get">GET</span> /api/news/random/</h3>
+        <p><strong>Descripción:</strong> Obtener noticias aleatorias</p>
+
+        <h4>Parámetros:</h4>
+        <table>
+          <tr>
+            <th>Parámetro</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>int</td>
+            <td>Número de noticias aleatorias (default: 10)</td>
+          </tr>
+        </table>
+
+        <h4>Ejemplo:</h4>
+        <div class="code">
+          GET https://lannister-news.com/api/news/random/?limit=5
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3>
+          <span class="method-get">GET</span> /api/news/section/{section}/
+        </h3>
+        <p>
+          <strong>Descripción:</strong> Obtener noticias por sección específica
+        </p>
+
+        <h4>Ejemplo:</h4>
+        <div class="code">
+          GET https://lannister-news.com/api/news/section/tecnologia/?limit=20
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3><span class="method-get">GET</span> /api/news/stats/</h3>
+        <p><strong>Descripción:</strong> Obtener estadísticas del sistema</p>
+
+        <h4>Ejemplo:</h4>
+        <div class="code">GET https://lannister-news.com/api/news/stats/</div>
+
+        <h4>Respuesta:</h4>
+        <div class="json">
+          { "total_docs": 1024, "unique_sources": 12, "cap_docs": 10000,
+          "remaining_until_cap": 8976, "inserted_last_24h": 0 }
+        </div>
+      </div>
+    </div>
+
+    <div id="chatbot">
+      <h2>🤖 CHATBOT ENDPOINTS</h2>
+
+      <div class="endpoint">
+        <h3><span class="method-post">POST</span> /api/chatbot/</h3>
+        <p><strong>Descripción:</strong> Hacer pregunta al chatbot con ML</p>
+
+        <h4>Headers:</h4>
+        <div class="code">Content-Type: application/json</div>
+
+        <h4>Body:</h4>
+        <div class="json">{ "question": "¿Cómo funciona este sistema?" }</div>
+
+        <h4>Ejemplo completo:</h4>
+        <div class="code">
+          POST https://lannister-news.com/api/chatbot/<br />
+          Content-Type: application/json<br /><br />
+          { "question": "¿Qué servicios ofrecen?" }
+        </div>
+
+        <h4>Respuesta:</h4>
+        <div class="json">
+          { "question": "¿Qué servicios ofrecen?", "answer": [ "Respuesta
+          generada por ML", 0.8542 ] }
+        </div>
+
+        <p><strong>Estructura de Respuesta:</strong></p>
+        <ul>
+          <li><code>question</code>: Pregunta enviada</li>
+          <li><code>answer[0]</code>: Texto de la respuesta</li>
+          <li><code>answer[1]</code>: Score de confianza (0.0 - 1.0)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="users">
+      <h2>👥 USER ENDPOINTS</h2>
+
+      <h3>Gestión de Usuarios</h3>
+      <div class="endpoint">
+        <h4>
+          <span class="method-get">GET</span>/<span class="method-post"
+            >POST</span
+          >
+          /api/users/
+        </h4>
+        <p><strong>Descripción:</strong> CRUD de usuarios</p>
+
+        <h4>POST - Crear Usuario:</h4>
+        <div class="json">
+          { "username": "nuevo_usuario", "email": "usuario@ejemplo.com",
+          "password": "contraseña_segura" }
+        </div>
+      </div>
+
+      <h3>Autenticación</h3>
+      <table>
+        <tr>
+          <th>Método</th>
+          <th>Endpoint</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td class="method-get">GET</td>
+          <td>/api/users/auth/csrf/</td>
+          <td>Obtener token CSRF</td>
+        </tr>
+        <tr>
+          <td class="method-post">POST</td>
+          <td>/api/users/auth/login/</td>
+          <td>Iniciar sesión</td>
+        </tr>
+        <tr>
+          <td class="method-post">POST</td>
+          <td>/api/users/auth/logout/</td>
+          <td>Cerrar sesión</td>
+        </tr>
+        <tr>
+          <td class="method-get">GET</td>
+          <td>/api/users/auth/me/</td>
+          <td>Usuario actual</td>
+        </tr>
+      </table>
+
+      <h3>Favoritos</h3>
+      <div class="endpoint">
+        <h4>
+          <span class="method-get">GET</span>/<span class="method-post"
+            >POST</span
+          >
+          /api/users/favorites/
+        </h4>
+        <p><strong>Descripción:</strong> Gestionar noticias favoritas</p>
+
+        <h4>POST - Agregar Favorito:</h4>
+        <div class="json">
+          { "news_id": "68e0546c26f154071ba92437", "title": "Título de la
+          noticia" }
+        </div>
+      </div>
+    </div>
+
+    <div id="ejemplos">
+      <h2>🧪 EJEMPLOS DE PRUEBAS EN POSTMAN</h2>
+
+      <div class="endpoint">
+        <h3>1. Obtener Noticias de Deportes</h3>
+        <div class="code">
+          GET https://lannister-news.com/api/news/?q=deportes&limit=5
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3>2. Noticias Aleatorias</h3>
+        <div class="code">
+          GET https://lannister-news.com/api/news/random/?limit=3
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3>3. Chatbot - Pregunta General</h3>
+        <div class="code">
+          POST https://lannister-news.com/api/chatbot/<br />
+          Content-Type: application/json<br /><br />
+          { "question": "¿Cómo puedo obtener las últimas noticias?" }
+        </div>
+      </div>
+
+      <div class="endpoint">
+        <h3>4. Estadísticas del Sistema</h3>
+        <div class="code">GET https://lannister-news.com/api/news/stats/</div>
+      </div>
+
+      <div class="endpoint">
+        <h3>5. Login de Usuario</h3>
+        <div class="code">
+          POST https://lannister-news.com/api/users/auth/login/<br />
+          Content-Type: application/json<br /><br />
+          { "username": "demo_user", "password": "demo_password" }
+        </div>
+      </div>
+    </div>
+
+    <div id="tecnico">
+      <h2>🔧 INFORMACIÓN TÉCNICA</h2>
+
+      <h3>Infraestructura AWS:</h3>
+      <ul>
+        <li><strong>EC2:</strong> t3.large con Ubuntu 22.04</li>
+        <li><strong>IP Elástica:</strong> 56.125.112.159</li>
+        <li><strong>RDS:</strong> MySQL t3.micro</li>
+        <li><strong>MongoDB:</strong> Atlas cluster</li>
+        <li><strong>Redis:</strong> Contenedor Docker</li>
+        <li><strong>Storage:</strong> EBS 100GB</li>
+      </ul>
+
+      <h3>Tecnologías:</h3>
+      <ul>
+        <li><strong>Backend:</strong> Django 5.2.5 + DRF</li>
+        <li><strong>ML:</strong> Transformers, SpaCy, VADER Sentiment</li>
+        <li><strong>Contenedores:</strong> Docker + Docker Compose</li>
+        <li>
+          <strong>Base de Datos:</strong> MongoDB (principal), MySQL (usuarios),
+          Redis (caché)
+        </li>
+      </ul>
+
+      <h3>Headers Requeridos:</h3>
+      <table>
+        <tr>
+          <th>Header</th>
+          <th>Valor</th>
+          <th>Uso</th>
+        </tr>
+        <tr>
+          <td>Content-Type</td>
+          <td>application/json</td>
+          <td>Para POST requests</td>
+        </tr>
+        <tr>
+          <td>Accept</td>
+          <td>application/json</td>
+          <td>Opcional</td>
+        </tr>
+      </table>
+
+      <h3>Códigos de Respuesta:</h3>
+      <table>
+        <tr>
+          <th>Código</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td class="status">200 OK</td>
+          <td>Operación exitosa</td>
+        </tr>
+        <tr>
+          <td>400 Bad Request</td>
+          <td>Error en los parámetros</td>
+        </tr>
+        <tr>
+          <td>404 Not Found</td>
+          <td>Recurso no encontrado</td>
+        </tr>
+        <tr>
+          <td>500 Internal Server Error</td>
+          <td>Error del servidor</td>
+        </tr>
+      </table>
+
+      <h3>Fuentes de Noticias (12):</h3>
+      <div style="columns: 2">
+        <ul>
+          <li>Blu Radio</li>
+          <li>Caracol TV</li>
+          <li>City Tv</li>
+          <li>EL HERALDO.CO</li>
+          <li>EL TIEMPO.COM</li>
+          <li>Edictos El Tiempo</li>
+          <li>El Espectador</li>
+          <li>Infobae</li>
+          <li>Pulzo</li>
+          <li>RCN Radio</li>
+          <li>Semana.com</li>
+          <li>W Radio</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top: 40px">
+      <h3>📞 SOPORTE</h3>
+      <p>
+        <strong>Estado:</strong>
+        <span class="status">✅ Sistema completamente funcional</span><br />
+        <strong>Última actualización:</strong> 14 de octubre de 2025<br />
+        <strong>Versión:</strong> 1.0.0 - Producción AWS
+      </p>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: #7f8c8d">
+      <em
+        >Documentación generada automáticamente del sistema desplegado en
+        AWS</em
+      >
+    </footer>
+  </body>
+</html>
