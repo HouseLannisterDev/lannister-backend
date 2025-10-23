@@ -1,11 +1,11 @@
 {
-  "_name_or_path": "bert-base-multilingual-uncased",
   "architectures": [
     "BertForSequenceClassification"
   ],
   "attention_probs_dropout_prob": 0.1,
   "classifier_dropout": null,
   "directionality": "bidi",
+  "dtype": "float32",
   "hidden_act": "gelu",
   "hidden_dropout_prob": 0.1,
   "hidden_size": 768,
@@ -26,7 +26,8 @@
     "13": "LABEL_13",
     "14": "LABEL_14",
     "15": "LABEL_15",
-    "16": "LABEL_16"
+    "16": "LABEL_16",
+    "17": "LABEL_17"
   },
   "initializer_range": 0.02,
   "intermediate_size": 3072,
@@ -40,6 +41,7 @@
     "LABEL_14": 14,
     "LABEL_15": 15,
     "LABEL_16": 16,
+    "LABEL_17": 17,
     "LABEL_2": 2,
     "LABEL_3": 3,
     "LABEL_4": 4,
@@ -62,8 +64,7 @@
   "pooler_type": "first_token_transform",
   "position_embedding_type": "absolute",
   "problem_type": "single_label_classification",
-  "torch_dtype": "float32",
-  "transformers_version": "4.44.2",
+  "transformers_version": "4.56.2",
   "type_vocab_size": 2,
   "use_cache": true,
   "vocab_size": 105879
