@@ -1,78 +1,6 @@
-###############################
-# FINAL CORS / CSRF / COOKIES #
-###############################
-CORS_ALLOW_ALL_ORIGINS = False
-
-# =========================
-# DEBUG (activar para diagnóstico)
-# =========================
-DEBUG = True
-SECRET_KEY = "p7!v8w@r2$k1z#x6b9q4t0s5e3u8l1m0c2d7f6g5h4j3k2l1"
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-    "http://lannister-news.com",  # HTTP para desarrollo
-    "https://app.lannister-news.com",
-    "https://www.lannister-news.com",
-    "http://www.lannister-news.com",  # HTTP para desarrollo
-    "https://api.lannister-news.com",  # Backend API
-]
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = [
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-]
-CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https:\/\/.*\.d168j68zix66ce\.amplifyapp\.com$",
-    r"^https:\/\/.*\.amplifyapp\.com$",
-]
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://develop.d168j68zix66ce.amplifyapp.com",
-    "https://lannister-news.com",
-    "http://lannister-news.com",  # HTTP para desarrollo
-    "https://app.lannister-news.com",
-    "https://www.lannister-news.com",
-    "http://www.lannister-news.com",  # HTTP para desarrollo
-    "https://api.lannister-news.com",  # Backend API
-]
-CSRF_COOKIE_NAME = "csrftoken"
-CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_DOMAIN = ".lannister-news.com"  # Permite compartir cookies entre subdominios
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_DOMAIN = ".lannister-news.com"  # Permite compartir cookies entre subdominios
-print("USANDO ESTE settings.py DE LANNISTER")
 """
 Django settings for lannister_news_api project.
 """
-
-# =========================
-# ALLOWED_HOSTS
-# =========================
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "lannister-news.com",
-    "api.lannister-news.com",  # Backend API
-    "app.lannister-news.com",
-    "www.lannister-news.com",
-    "develop.d168j68zix66ce.amplifyapp.com",
-]
 
 from pathlib import Path
 import os
@@ -80,8 +8,24 @@ import environ
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
 
+# Cargar archivo .env
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+# =========================
+# Core / Env
+# =========================
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-!uwquq*ppxw@0c67nzmvvcm&tzd2mmtkgzjrxr$r0c1i=1%d2-",
+)
+DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+# =========================
+# Installed Apps
+# =========================
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -89,22 +33,24 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     # Third-party
     "rest_framework",
     "corsheaders",
-    # Local apps
+
+    # Local
     "users",
     "news",
-    "chatbot",
+    "chatbot",   # 👈 añadida tu app de chatbot
 ]
 
 # =========================
-# MIDDLEWARE
+# Middleware
 # =========================
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # 🔥 debe ir arriba
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -114,9 +60,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "lannister_news_api.urls"
 
-# =========================
-# TEMPLATES
-# =========================
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -135,7 +78,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "lannister_news_api.wsgi.application"
 
 # =========================
-# DATABASE (MySQL - AWS RDS)
+# Database (AWS RDS MySQL)
 # =========================
 DATABASES = {
     "default": {
@@ -143,7 +86,7 @@ DATABASES = {
         "NAME": os.getenv("MYSQL_DB", "lannister_news"),
         "USER": os.getenv("MYSQL_USER", "admin"),
         "PASSWORD": os.getenv("MYSQL_PASSWORD", "root2025"),
-            "HOST": os.getenv("MYSQL_HOST", "lannister-mysql-db.cb0gcymssl9l.sa-east-1.rds.amazonaws.com"),
+        "HOST": os.getenv("MYSQL_HOST", "database-1.cpcimk2ikn91.sa-east-1.rds.amazonaws.com"),
         "PORT": os.getenv("MYSQL_PORT", "3306"),
         "OPTIONS": {
             "charset": "utf8mb4",
@@ -156,21 +99,24 @@ DATABASES = {
 }
 
 # =========================
-# CACHE / REDIS
+# Cache / Redis
 # =========================
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": os.getenv("REDIS_URL", "redis://127.0.0.1:6379/1"),
-        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
     }
 }
 
 # =========================
-# SESSIONS
+# Sessions
 # =========================
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 SESSION_CACHE_ALIAS = "default"
+
 SESSION_COOKIE_NAME = "sessionid"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_AGE = int(os.getenv("SESSION_COOKIE_AGE", 60 * 60 * 24 * 7))
@@ -189,7 +135,7 @@ REST_FRAMEWORK = {
 }
 
 # =========================
-# PASSWORD VALIDATORS
+# Password validators
 # =========================
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -207,20 +153,35 @@ USE_I18N = True
 USE_TZ = True
 
 # =========================
-# STATIC
+# Static
 # =========================
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # =========================
-# CUSTOM USER
+# Custom User
 # =========================
 AUTH_USER_MODEL = "users.CustomUser"
 
+# =========================
+# CORS / CSRF
+# =========================
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_COOKIE_HTTPONLY = False
 
 # =========================
-# MONGODB
+# MongoDB
 # =========================
 MONGO_DB = {
     "NAME": os.getenv("MONGO_NAME", "lannister_news"),
@@ -230,7 +191,7 @@ MONGO_DB = {
 }
 
 # =========================
-# SCRAPER CONFIG
+# News Scraper
 # =========================
 def _csv_env(name: str, default: str = "") -> list[str]:
     raw = os.getenv(name, default)
@@ -239,16 +200,17 @@ def _csv_env(name: str, default: str = "") -> list[str]:
 NEWS_SOURCES = _csv_env("NEWS_SOURCES")
 NEWS_PROXIES = _csv_env("NEWS_PROXIES")
 NEWS_USER_AGENTS = _csv_env("NEWS_USER_AGENTS")
+
 NEWS_REQ_DELAY_MIN = float(os.getenv("NEWS_REQ_DELAY_MIN", "3"))
 NEWS_REQ_DELAY_MAX = float(os.getenv("NEWS_REQ_DELAY_MAX", "8"))
-NEWS_MAX_RETRIES = int(os.getenv("NEWS_MAX_RETRIES", "3"))
+NEWS_MAX_RETRIES   = int(os.getenv("NEWS_MAX_RETRIES", "3"))
 
 # =========================
-# CHATBOT CONFIG
+# Chatbot
 # =========================
-env = environ.Env()
-FAQ_PATH = env("FAQ_PATH", default=os.path.join(BASE_DIR, "chatbot/faqs/faqs.json"))
+
+FAQ_PATH = env("FAQ_PATH", default=os.path.join(BASE_DIR, "./chatbot/faqs/faqs.json"))
 FAQ_NORMALIZED_PATH = env("FAQ_NORMALIZED_PATH", default=os.path.join(BASE_DIR, "chatbot/faqs/faqs_normalized.json"))
 FALLOVER_THRESHOLD = env.float("FALLOVER_THRESHOLD", default=0.08)
-FALLOVER_MESSAGE = env("FALLOVER_MESSAGE", default="Lo siento, no entendí. Por favor intenta con otra pregunta.")
-FAQ_MODEL_PATH = env("FAQ_MODEL_PATH", default=os.path.join(BASE_DIR, "chatbot/faq_model_2"))
+FALLOVER_MESSAGE = env("FALLOVER_MESSAGE", default="Lo siento, no entendi xd. Por favor intenta con otra.")
+FAQ_MODEL_PATH = env("FAQ_MODEL_PATH", default=os.path.join(BASE_DIR, os.getenv("FAQ_MODEL_PATH", "chatbot/faq_model_2"))) 
