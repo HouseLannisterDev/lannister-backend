@@ -14,8 +14,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://develop.d168j68zix66ce.amplifyapp.com",
     "https://lannister-news.com",
+    "http://lannister-news.com",  # HTTP para desarrollo
     "https://app.lannister-news.com",
     "https://www.lannister-news.com",
+    "http://www.lannister-news.com",  # HTTP para desarrollo
 ]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -39,17 +41,19 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://develop.d168j68zix66ce.amplifyapp.com",
     "https://lannister-news.com",
+    "http://lannister-news.com",  # HTTP para desarrollo
     "https://app.lannister-news.com",
     "https://www.lannister-news.com",
+    "http://www.lannister-news.com",  # HTTP para desarrollo
 ]
 CSRF_COOKIE_NAME = "csrftoken"
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_DOMAIN = ".d168j68zix66ce.amplifyapp.com"
+CSRF_COOKIE_DOMAIN = ".lannister-news.com"  # Cambiado para tu dominio personalizado
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_DOMAIN = ".d168j68zix66ce.amplifyapp.com"
+SESSION_COOKIE_DOMAIN = ".lannister-news.com"  # Cambiado para tu dominio personalizado
 print("USANDO ESTE settings.py DE LANNISTER")
 """
 Django settings for lannister_news_api project.
