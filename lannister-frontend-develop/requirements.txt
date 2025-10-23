@@ -1,0 +1,17 @@
+##############################################
+# Proyecto: Lannister News – Servidor Frontend
+# Dependencias iniciales (Node.js)
+#
+# Este proyecto requiere configurar un entorno
+# Node.js en la carpeta frontend/server.
+# 
+# Pasos de instalación:
+#   1. Inicializar package.json
+#   2. Instalar Express como dependencia
+##############################################
+
+# 1. Inicializar proyecto Node.js (genera package.json)
+npm init -y
+
+# 2. Instalar Express (framework backend HTTP)
+npm install express
