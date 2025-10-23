@@ -1,0 +1,15 @@
+version: 1
+applications:
+  - appRoot: frontend              # aquí vive tu index.html y demás
+    frontend:
+      phases:
+        preBuild:
+          commands: []             # no hay dependencia que instalar
+        build:
+          commands: []             # no hay build, es copiar tal cual
+      artifacts:
+        baseDirectory: .           # publica el contenido de /frontend
+        files:
+          - '**/*'
+      cache:
+        paths: []                  # sin cache por ahora

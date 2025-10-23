@@ -1,0 +1,209 @@
+/* Overlay general */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+/* Modal de registro */
+.register-modal {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.4s ease;
+}
+
+.register-modal h2 {
+    font-size: 1.6rem;
+    color: #004080;
+    margin-bottom: 10px;
+}
+
+.register-modal p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.register-modal input[type="text"],
+.register-modal input[type="email"],
+.register-modal input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.register-modal input:focus {
+    border-color: #004080;
+    box-shadow: 0 0 8px rgba(0,64,128,0.2);
+}
+
+/* Botones */
+.register-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.register-buttons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#register-accept {
+    background: #004080;
+    color: #fff;
+}
+
+#register-accept:hover {
+    background: #003366;
+}
+
+#register-cancel {
+    background: #ccc;
+    color: #333;
+}
+
+#register-cancel:hover {
+    background: #999;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+    .register-modal {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+    justify-content: flex-start;
+}
+
+.show-password input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.terms-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.terms-container input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.terms-container a {
+    color: #004080;
+    text-decoration: underline;
+}
+
+.terms-container a:hover {
+    color: #00264d;
+}
+
+/* === INPUT DATE: estilo consistente con los demás campos === */
+.register-modal input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  outline: none;
+  transition: 0.3s;
+  box-sizing: border-box;
+
+  /* Quitar apariencia nativa y usar ícono propio */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+
+  /* Ícono calendario (SVG inline) */
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='5' width='18' height='16' rx='2' ry='2' stroke='%23999' stroke-width='2'/%3E%3Cpath d='M16 3v4M8 3v4M3 11h18' stroke='%23999' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px 20px;
+  padding-right: 44px; /* espacio para el ícono */
+}
+
+/* Foco coherente con el resto */
+.register-modal input[type="date"]:focus {
+  border-color: #004080;
+  box-shadow: 0 0 8px rgba(0,64,128,0.2);
+}
+
+/* Ocultar el picker nativo (dejamos clickeable toda el área) */
+.register-modal input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Ajuste del texto interno del date en WebKit */
+.register-modal input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+}
+
+/* Cuando el campo requerido está vacío, usa color tenue para el “formato fantasma” */
+.register-modal input[type="date"]:required:invalid {
+  color: #666; /* color del texto hasta que el usuario elija fecha */
+}
+
+/* En Chrome/Safari, controla el color del contenido editable del date */
+.register-modal input[type="date"]:required:invalid::-webkit-datetime-edit {
+  color: #9aa0a6;
+}
+
+/* En Firefox, ayuda a mantener consistencia visual */
+@-moz-document url-prefix() {
+  .register-modal input[type="date"] {
+    padding-right: 12px; /* Firefox no muestra ícono nativo igual */
+    background-image: none; /* evita ícono doble */
+  }
+}
