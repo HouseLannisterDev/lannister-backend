@@ -50,10 +50,10 @@ CSRF_COOKIE_NAME = "csrftoken"
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_DOMAIN = ".lannister-news.com"  # Cambiado para tu dominio personalizado
+CSRF_COOKIE_DOMAIN = None  # None permite que funcione con cualquier dominio (Amplify y personalizado)
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_DOMAIN = ".lannister-news.com"  # Cambiado para tu dominio personalizado
+SESSION_COOKIE_DOMAIN = None  # None permite que funcione con cualquier dominio (Amplify y personalizado)
 print("USANDO ESTE settings.py DE LANNISTER")
 """
 Django settings for lannister_news_api project.
