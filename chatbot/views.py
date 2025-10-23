@@ -14,7 +14,7 @@ class ChatbotView(View):
 
     def post(self, request: HttpRequest):
       
-            # 1. Parsear body (esperamos JSON con { "question": "...", "lang": "es/en" })
+            # 1. Parsear body (esperamos JSON con { "question": "..." })
             body = json.loads(request.body.decode("utf-8"))
             question = body.get("question")
 
@@ -28,14 +28,18 @@ class ChatbotView(View):
             # 2. Crear servicio desde el Factory
             service = ChatbotFactory.create()
 
-            # 3. Obtener respuesta
-            answer= service.get_answer(question)
+            # 3. Obtener respuesta (ahora retorna un dict)
+            result = service.get_answer(question)
 
-            # 4. Retornar en JSON
+            # 4. Retornar en JSON con metadata adicional
             return JsonResponse(
                 {
                     "question": question,
-                    "answer": answer
+                    "answer": result["answer"],
+                    "confidence": round(result["confidence"], 3),
+                    "type": result["type"],  # "faq" o "news_search"
+                    "category": result.get("category"),  # Solo si es news_search
+                    "news_count": result.get("count")  # Solo si es news_search
                 },
                 safe=False,
                 json_dumps_params={"ensure_ascii": False, "indent": 2},
