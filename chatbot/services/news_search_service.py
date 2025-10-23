@@ -55,8 +55,11 @@ class NewsSearchService:
             List[Dict]: Lista de noticias encontradas
         """
         try:
+            # Capitalizar primera letra para match con MongoDB (ej: "deportes" -> "Deportes")
+            category_capitalized = category.capitalize()
+            
             # Obtener noticias aleatorias de la categoría
-            news_list = get_random_news(limit=limit, category=category)
+            news_list = get_random_news(limit=limit, category=category_capitalized)
             return news_list
         except Exception as e:
             print(f"❌ Error buscando noticias en MongoDB: {e}")

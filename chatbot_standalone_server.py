@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Simple standalone chatbot API server for testing without Django/MySQL.
+Standalone chatbot API server with MongoDB connection.
 Runs on port 8001 to avoid conflicts.
 
 Usage:
@@ -15,6 +15,7 @@ Then test with Postman:
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import sys
+import re
 from pathlib import Path
 
 # Add project root to path
@@ -25,10 +26,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 try:
     from transformers import pipeline
     import spacy
+    from pymongo import MongoClient
     from chatbot.services.text_normalizer import TextNormalizer
 except ImportError as e:
     print(f"Error: Missing required packages - {e}")
-    print("Install with: pip install transformers torch spacy")
+    print("Install with: pip install transformers torch spacy pymongo")
     sys.exit(1)
 
 # Paths
@@ -36,17 +38,39 @@ FAQ_PATH = PROJECT_ROOT / "chatbot" / "faqs" / "faqs.json"
 MODEL_PATH = PROJECT_ROOT / "chatbot" / "faq_model_2"
 LABEL_MAP_PATH = MODEL_PATH / "label_map.json"
 
+# MongoDB Configuration - Using LOCAL MongoDB
+MONGO_URI = "mongodb://localhost:27017/"
+MONGO_DB_NAME = "lannister_news"
+MONGO_COLLECTION = "news"
+
 # Global resources
 nlp = None
 classifier = None
 label_map = None
 faqs = None
+mongo_client = None
+mongo_db = None
+mongo_collection = None
 
 def load_resources():
     """Load all required resources."""
-    global nlp, classifier, label_map, faqs
+    global nlp, classifier, label_map, faqs, mongo_client, mongo_db, mongo_collection
     
     print("🚀 Loading chatbot resources...")
+    
+    # Connect to MongoDB
+    try:
+        mongo_client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+        # Test connection
+        mongo_client.admin.command('ping')
+        mongo_db = mongo_client[MONGO_DB_NAME]
+        mongo_collection = mongo_db[MONGO_COLLECTION]
+        doc_count = mongo_collection.count_documents({})
+        print(f"✓ MongoDB connected ({doc_count} documents)")
+    except Exception as e:
+        print(f"⚠ MongoDB connection failed: {e}")
+        print("  News search will not work, but FAQs will still function")
+        mongo_collection = None
     
     # Load spaCy
     try:
@@ -103,6 +127,77 @@ def get_faq_by_id(faq_id):
             return faq
     return None
 
+def extract_category(question):
+    """Extract news category from question."""
+    question_lower = question.lower()
+    
+    # Category patterns - return with capital letter to match MongoDB
+    patterns = {
+        "Deportes": r"deporte|fútbol|futbol|soccer|sports?|basketball|basquet",
+        "Tecnologia": r"tecnolog[ií]a|tech|software|hardware|comput",
+        "Moda": r"moda|fashion|ropa|estilo|tendencia",
+        "Animales": r"animal|mascota|pet|fauna|perro|gato|cat|dog",
+        "Judiciales": r"judicial|crimen|crime|delito|policia|corte"
+    }
+    
+    for category, pattern in patterns.items():
+        if re.search(pattern, question_lower):
+            return category
+    
+    return None
+
+def search_news_mongodb(category=None, limit=5):
+    """Search news in MongoDB."""
+    if mongo_collection is None:
+        return []
+    
+    try:
+        query = {}
+        if category:
+            query["category"] = category
+        
+        # Get random news
+        pipeline = [
+            {"$match": query},
+            {"$sample": {"size": limit}}
+        ]
+        
+        results = list(mongo_collection.aggregate(pipeline))
+        return results
+    except Exception as e:
+        print(f"Error searching MongoDB: {e}")
+        return []
+
+def format_news_response(news_list, category=None):
+    """Format news list into readable response."""
+    if not news_list:
+        category_text = f"de **{category}**" if category else ""
+        return f"Lo siento, no encontré noticias {category_text} en este momento. Intenta con otra categoría."
+    
+    category_emojis = {
+        "Deportes": "⚽",
+        "Tecnologia": "💻",
+        "Moda": "👗",
+        "Animales": "🐾",
+        "Judiciales": "⚖️"
+    }
+    
+    emoji = category_emojis.get(category, "📰")
+    category_text = f"de **{category}**" if category else ""
+    
+    response = f"{emoji} Aquí tienes las últimas noticias {category_text}:\n\n"
+    
+    for i, news in enumerate(news_list, 1):
+        title = news.get("title", "Sin título")
+        url = news.get("url", "#")
+        source = news.get("source", "Fuente desconocida")
+        
+        response += f"{i}. **{title}**\n"
+        response += f"   📌 Fuente: {source}\n"
+        response += f"   🔗 [{url}]({url})\n\n"
+    
+    return response
+
 def predict_answer(question, threshold=0.08):
     """Predict answer for a question."""
     # Normalize question
@@ -139,12 +234,21 @@ def predict_answer(question, threshold=0.08):
     
     # Check if it's news search
     if faq_id == 18:
+        # Extract category from question
+        category = extract_category(question)
+        
+        # Search news in MongoDB
+        news_list = search_news_mongodb(category=category, limit=5)
+        
+        # Format response
+        answer = format_news_response(news_list, category)
+        
         return {
-            "answer": "🔍 Búsqueda de noticias detectada. En producción, esto consultaría MongoDB y devolvería noticias de la categoría solicitada.",
+            "answer": answer,
             "confidence": confidence,
             "type": "news_search",
-            "category": "detected",
-            "note": "MongoDB connection not available in standalone mode. Deploy to test full functionality."
+            "category": category or "general",
+            "news_count": len(news_list)
         }
     
     # Return FAQ answer
