@@ -63,8 +63,9 @@ db.sqlite3
 # LOGS
 # ===========================
 *.log
-logs/
 *.log.*
+logs/
+chatbot_server.log
 
 # ===========================
 # BACKUPS Y TEMPORALES
@@ -76,6 +77,9 @@ logs/
 *.swp
 *.swo
 *~
+.env.backup
+.env.local
+*.log
 
 # ===========================
 # CONFIGURACIÓN DE IDEs
@@ -88,5 +92,11 @@ logs/
 # SISTEMA OPERATIVO
 # ===========================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 Thumbs.db
 *.orig
+ehthumbs.db
+Desktop.ini

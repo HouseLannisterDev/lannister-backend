@@ -1,199 +1,197 @@
-# lannister-backend
-# 🚀 Proyecto
+# 🦁 Lannister News API
 
-# Lannister News API
+API REST desarrollada con Django/DRF + MySQL + Redis para gestión de noticias, usuarios y chatbot inteligente.
 
-API en Django/DRF + MySQL + sesiones persistentes con Redis.
+## 📋 Tabla de Contenidos
 
-## Requisitos
-- Python 3.12/3.13
-- MySQL 8
-- Docker Desktop (opcional, para Redis)
+- [Características](#-características)
+- [Requisitos](#-requisitos)
+- [Instalación Rápida](#-instalación-rápida)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Documentación](#-documentación)
+- [Flujo de Trabajo Git](#-flujo-de-trabajo-git)
+
+## ✨ Características
+
+- 🔐 Autenticación con sesiones persistentes (Redis)
+- 📰 API REST para gestión de noticias
+- 👥 Gestión de usuarios y favoritos
+- 🤖 Chatbot inteligente con búsqueda de noticias
+- 🐳 Containerización con Docker
+- ☁️ Deployment en AWS (EC2, RDS, ElastiCache)
+
+## 🛠️ Requisitos
+
+- Python 3.12+
+- MySQL 8.0+
+- Redis 6.0+
+- Docker Desktop (opcional)
 - Git
 
-## Setup rápido (dev)
+## 🚀 Instalación Rápida
+
 ```bash
-git clone <repo>
+# Clonar repositorio
+git clone https://github.com/HouseLannisterDev/lannister-backend.git
 cd lannister-backend
 
-# entorno
+# Crear entorno virtual
 python -m venv venv
-# Windows PowerShell
+
+# Activar entorno
+# Windows
 .\venv\Scripts\Activate.ps1
 # macOS/Linux
-# source venv/bin/activate
+source venv/bin/activate
 
+# Instalar dependencias
 pip install -r requirements.txt
 
-# variables de entorno
+# Configurar variables de entorno
 cp .env.example .env
-# (ajusta credenciales si es necesario)
+# Editar .env con tus credenciales
 
-# Redis (Docker)
-docker compose up -d
+# Iniciar Redis (Docker)
+docker-compose -f deploy/docker-compose.yml up -d
 
 # Migraciones
-py manage.py migrate
-py manage.py migrate sessions
+python manage.py migrate
 
-# Usuario admin (opcional)
-py manage.py createsuperuser
+# Crear superusuario (opcional)
+python manage.py createsuperuser
 
-# Run
-py manage.py runserver
-
-Endpoints de Auth (sesiones en cookie)
-
-  GET /users/auth/csrf/ → setea cookie csrftoken
-  POST /users/auth/login/ → body {"username","password"} (requiere header X-CSRFToken)
-  GET /users/auth/me/ → estado de sesión
-  POST /users/auth/logout/ → requiere X-CSRFToken
-  En Postman: primero csrf/, luego login/ con X-CSRFToken y Postman enviará las cookies (csrftoken, sessionid) automáticamente.
-
-Users & Favorites
-
-  GET/POST /users/
-  GET/PATCH/DELETE /users/{id}/
-  GET/POST /users/favorites/
-  GET/PATCH/DELETE /users/favorites/{id}/ (autenticado)
-
-
-## 📌 Estructura de Ramas en Git
-
-Para garantizar un desarrollo organizado y eficiente, utilizamos **Git Flow** como estrategia de control de versiones. Este flujo nos permite mantener la estabilidad del código en producción mientras facilitamos el desarrollo de nuevas funcionalidades.
-
----
-
-## 🔹 Ramas Principales (Persistentes)
-Estas ramas **nunca se eliminan** y representan los estados clave del proyecto.
-
-### `main` (Producción)
-✅ Contiene la versión estable y en producción del sistema.
-✅ Solo se actualiza mediante **merge desde `develop`** cuando se lanza una versión final.
-✅ No se realizan desarrollos directos en esta rama.
-
-```sh
-# Fusionar cambios de develop a main cuando una versión está lista
-git checkout main
-git merge develop
+# Iniciar servidor de desarrollo
+python manage.py runserver
 ```
 
----
+## 📁 Estructura del Proyecto
 
-### `develop` (Desarrollo)
-✅ Contiene el código en desarrollo y pruebas.
-✅ Recibe los cambios de las ramas `feature/*`.
-✅ Se mantiene siempre funcional para evitar bloqueos en el equipo.
-
-```sh
-# Crear una nueva rama de desarrollo desde develop
-git checkout develop
+```
+lannister-backend/
+├── 📄 manage.py                    # Django management
+├── 📄 requirements.txt             # Dependencias Python
+├── 📁 docs/                        # 📚 Documentación completa
+│   ├── api/                        # Documentación de APIs
+│   ├── deployment/                 # Guías de deployment
+│   ├── testing/                    # Guías de testing
+│   └── security/                   # Documentación de seguridad
+├── 📁 scripts/                     # 🔧 Scripts de utilidad
+│   ├── deploy-aws.sh              # Deploy a AWS
+│   ├── start-local.sh             # Inicio local
+│   └── chatbot_standalone_server.py
+├── 📁 deploy/                      # 🐳 Configuración deployment
+│   ├── Dockerfile                  # Docker development
+│   ├── Dockerfile.prod             # Docker production
+│   ├── docker-compose.yml          # Orquestación servicios
+│   ├── nginx.conf                  # Configuración Nginx
+│   └── supervisord.conf            # Configuración Supervisor
+├── 📁 aws-deployment-scripts/      # Scripts específicos AWS
+├── 📁 lannister_news_api/          # Django project settings
+├── 📁 users/                       # App de usuarios
+├── 📁 news/                        # App de noticias
+├── 📁 chatbot/                     # App de chatbot
+└── 📁 .venv/                       # Entorno virtual (local)
 ```
 
----
+## 🔌 API Endpoints Principales
 
-## 🌱 Ramas Temporales (Se eliminan al finalizar)
-Estas ramas son **temporales** y se crean según la necesidad.
+### Autenticación (Sesiones)
+```http
+GET  /users/auth/csrf/     # Obtener token CSRF
+POST /users/auth/login/    # Login (requiere X-CSRFToken)
+GET  /users/auth/me/       # Estado de sesión
+POST /users/auth/logout/   # Cerrar sesión
+```
 
-### `feature/*` (Nuevas Funcionalidades)
-📌 Se crean desde `develop` para desarrollar nuevas funcionalidades.
-📌 Una vez terminadas, se fusionan en `develop` y se eliminan.
+### Usuarios
+```http
+GET    /users/           # Listar usuarios
+POST   /users/           # Crear usuario
+GET    /users/{id}/      # Detalle usuario
+PATCH  /users/{id}/      # Actualizar usuario
+DELETE /users/{id}/      # Eliminar usuario
+```
 
-```sh
-# Crear una nueva rama para una funcionalidad
+### Favoritos
+```http
+GET    /users/favorites/      # Listar favoritos
+POST   /users/favorites/      # Agregar favorito
+DELETE /users/favorites/{id}/ # Eliminar favorito
+```
+
+### Chatbot
+```http
+POST /chatbot/chat/      # Enviar mensaje al chatbot
+POST /chatbot/search/    # Buscar noticias
+```
+
+> 📖 Para documentación completa de la API, ver [docs/api/API_Documentation.md](./docs/api/API_Documentation.md)
+
+## 📚 Documentación
+
+- **[Documentación de API](./docs/api/API_Documentation.md)** - Endpoints y ejemplos completos
+- **[Guía de Deployment AWS](./docs/deployment/DEPLOY_AWS_GUIDE.md)** - Deploy paso a paso en AWS
+- **[Guía de Testing](./docs/testing/POSTMAN_TESTING_GUIDE.md)** - Testing con Postman
+- **[Seguridad](./docs/security/SECURITY_CLEANUP.md)** - Mejores prácticas de seguridad
+
+## 🐳 Docker
+
+### Development:
+```bash
+docker-compose -f deploy/docker-compose.yml up
+```
+
+### Production:
+```bash
+docker build -f deploy/Dockerfile.prod -t lannister-backend:prod .
+docker run -p 8000:8000 lannister-backend:prod
+```
+
+## 📌 Flujo de Trabajo Git
+
+Utilizamos **Git Flow** para mantener el código organizado y estable.
+
+### Ramas Principales (Persistentes)
+
+- **`main`** - Código en producción (estable)
+- **`develop`** - Código en desarrollo (integración continua)
+
+### Ramas Temporales
+
+- **`feature/*`** - Nuevas funcionalidades (desde `develop`)
+- **`hotfix/*`** - Correcciones urgentes (desde `main`)
+- **`release/*`** - Preparación de versiones (desde `develop`)
+
+### Ejemplo: Nueva Funcionalidad
+```bash
+# Crear feature desde develop
 git checkout develop
 git checkout -b feature/nueva-funcionalidad
-```
 
-Después de finalizar el desarrollo:
-```sh
+# Desarrollar y commit
+git add .
+git commit -m "feat: descripción de la funcionalidad"
+
+# Merge a develop
 git checkout develop
 git merge feature/nueva-funcionalidad
 git branch -d feature/nueva-funcionalidad
 ```
 
----
+### Reglas del Equipo
+- ✅ **Nunca** commit directo en `main` o `develop`
+- ✅ Usar nombres descriptivos para ramas
+- ✅ Pull Requests para merge a `develop`
+- ✅ Tags para versiones (`v1.0.0`)
 
-### `hotfix/*` (Correcciones Urgentes en Producción)
-📌 Se crean desde `main` para corregir errores críticos.
-📌 Se fusionan en `main` y `develop` y luego se eliminan.
+## 👥 Equipo
 
-```sh
-# Crear una rama hotfix para corregir un error crítico
-git checkout main
-git checkout -b hotfix/fix-login
-```
+**House Lannister Dev Team**
 
-Después de aplicar el fix:
-```sh
-git checkout main
-git merge hotfix/fix-login
-git checkout develop
-git merge hotfix/fix-login
-git branch -d hotfix/fix-login
-```
+## 📝 Licencia
+
+Este proyecto es privado y propiedad de House Lannister Development.
 
 ---
 
-### `release/*` (Preparación de Nueva Versión)
-📌 Se crean desde `develop` cuando se prepara una nueva versión para producción.
-📌 Se usa para **pruebas finales** y ajustes antes de lanzar la versión.
-📌 Se fusiona en `main` y `develop` y luego se elimina.
-
-```sh
-# Crear una rama de versión
- git checkout develop
- git checkout -b release/v1.0.0
-```
-
-Después de pruebas y ajustes:
-```sh
-git checkout main
-git merge release/v1.0.0
-git tag v1.0.0  # Etiquetar la versión
-git checkout develop
-git merge release/v1.0.0
-git branch -d release/v1.0.0
-```
-
----
-
-## 🎯 Resumen Visual del Flujo de Ramas
-```plaintext
-  main  <-- (Código estable y en producción)
-   │
-   ├── develop  <-- (Código en desarrollo)
-   │      │
-   │      ├── feature/nueva-funcionalidad  <-- (Rama para nuevas funcionalidades)
-   │      │
-   │      ├── feature/otra-funcionalidad
-   │
-   ├── release/v1.0.0  <-- (Preparación de versión para producción)
-   │
-   ├── hotfix/fix-crash  <-- (Corrección urgente en producción)
-```
-
----
-
-## 🔥 Beneficios de esta forma de trabajo:
-✅ **Organización clara:** Cada tipo de cambio tiene su propia rama.
-✅ **Menos errores en producción:** Se prueban los cambios antes de fusionarlos en `main`.
-✅ **Trabajo en equipo optimizado:** Varios desarrolladores pueden trabajar simultáneamente.
-✅ **Facilidad para revertir cambios:** Si un error se introduce, se puede volver a una versión estable fácilmente.
-
----
-
-## 📝 Reglas Generales del Equipo
-📌 **Nunca** hagas commits directamente en `main` o `develop`.
-📌 Cada feature, fix o release debe estar en su propia rama.
-📌 Usa nombres descriptivos para las ramas (`feature/login`, `hotfix/fix-email`).
-📌 Antes de hacer un merge, asegúrate de actualizar tu rama con los últimos cambios de `develop`.
-
-```sh
-git pull origin develop
-```
-
-📌 Realiza **Pull Requests** en GitHub antes de fusionar cambios en `develop`.
-📌 Usa `git tag` para marcar versiones en producción (`v1.0.0`).
-
----
+<p align="center">Made with ❤️ by House Lannister Dev Team</p>
