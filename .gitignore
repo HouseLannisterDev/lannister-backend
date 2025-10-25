@@ -1,23 +1,92 @@
-# Entorno virtual
-venv/
+# ===========================
+# ARCHIVOS SENSIBLES Y CREDENCIALES
+# ===========================
+# Variables de entorno
 .env
+.env.local
+.env.*.local
+*.env
 
-# Archivos de Python
+# Claves privadas y certificados
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Archivos de credenciales
+*credentials*
+!*credentials*.example*
+!*credentials*.template*
+*secrets*
+rds-credentials.txt
+db-credentials.txt
+
+# ===========================
+# ENTORNO VIRTUAL
+# ===========================
+venv/
+env/
+ENV/
+.venv/
+
+# ===========================
+# ARCHIVOS DE PYTHON
+# ===========================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
 
-# Archivos de base de datos SQLite (si usas uno local para pruebas)
+# ===========================
+# BASE DE DATOS
+# ===========================
+# SQLite (para pruebas locales)
 db.sqlite3
+*.sqlite
+*.sqlite3
+*.db
 
-# Archivos estáticos y compilados
+# ===========================
+# ARCHIVOS ESTÁTICOS Y MEDIA
+# ===========================
 /staticfiles/
 /media/
 
-# Archivos de logs
+# ===========================
+# LOGS
+# ===========================
 *.log
+logs/
+*.log.*
 
-# Configuración de IDEs
+# ===========================
+# BACKUPS Y TEMPORALES
+# ===========================
+*.backup
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ===========================
+# CONFIGURACIÓN DE IDEs
+# ===========================
 .vscode/
 .idea/
+*.code-workspace
+
+# ===========================
+# SISTEMA OPERATIVO
+# ===========================
+.DS_Store
+Thumbs.db
+*.orig

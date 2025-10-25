@@ -6,8 +6,8 @@ CORS_ALLOW_ALL_ORIGINS = False
 # =========================
 # DEBUG (activar para diagnóstico)
 # =========================
-DEBUG = True
-SECRET_KEY = "p7!v8w@r2$k1z#x6b9q4t0s5e3u8l1m0c2d7f6g5h4j3k2l1"
+DEBUG = os.getenv("DEBUG", "False") == "True"
+SECRET_KEY = os.getenv("SECRET_KEY", "INSECURE-DEFAULT-KEY-CHANGE-IN-PRODUCTION")
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -142,8 +142,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": os.getenv("MYSQL_DB", "lannister_news"),
         "USER": os.getenv("MYSQL_USER", "admin"),
-        "PASSWORD": os.getenv("MYSQL_PASSWORD", "root2025"),
-            "HOST": os.getenv("MYSQL_HOST", "lannister-mysql-db.cb0gcymssl9l.sa-east-1.rds.amazonaws.com"),
+        "PASSWORD": os.getenv("MYSQL_PASSWORD", ""),  # SIN VALOR POR DEFECTO - USAR .env
+        "HOST": os.getenv("MYSQL_HOST", "localhost"),
         "PORT": os.getenv("MYSQL_PORT", "3306"),
         "OPTIONS": {
             "charset": "utf8mb4",
