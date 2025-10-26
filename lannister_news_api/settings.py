@@ -7,7 +7,11 @@ CORS_ALLOW_ALL_ORIGINS = False
 # DEBUG (activar para diagnóstico)
 # =========================
 DEBUG = os.getenv("DEBUG", "False") == "True"
-SECRET_KEY = os.getenv("SECRET_KEY", "INSECURE-DEFAULT-KEY-CHANGE-IN-PRODUCTION")
+
+# SECRET_KEY debe estar en .env - Sin valor por defecto para forzar configuración segura
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("SECRET_KEY environment variable is required. Set it in .env file.")
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",

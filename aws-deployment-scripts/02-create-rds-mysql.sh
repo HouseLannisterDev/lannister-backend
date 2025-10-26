@@ -10,7 +10,22 @@ REGION="sa-east-1"
 DB_INSTANCE_IDENTIFIER="lannister-mysql-db"
 DB_NAME="lannister_news"
 DB_USERNAME="admin"
-DB_PASSWORD="LannisterDB2024!"  # Cambiar por una contraseña segura
+
+# 🔒 SEGURIDAD: Password debe pasarse como variable de entorno
+# Usar: export DB_PASSWORD="tu-password-seguro" antes de ejecutar este script
+# O pasar como argumento: ./02-create-rds-mysql.sh "tu-password-seguro"
+if [ -z "$DB_PASSWORD" ]; then
+    if [ -n "$1" ]; then
+        DB_PASSWORD="$1"
+    else
+        echo "❌ ERROR: DB_PASSWORD no está configurado"
+        echo "Opciones:"
+        echo "  1. Exportar variable: export DB_PASSWORD='tu-password-seguro'"
+        echo "  2. Pasar como argumento: ./02-create-rds-mysql.sh 'tu-password-seguro'"
+        exit 1
+    fi
+fi
+
 DB_INSTANCE_CLASS="db.t3.micro"  # Capa gratuita elegible
 ALLOCATED_STORAGE=20
 STORAGE_TYPE="gp2"
