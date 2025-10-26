@@ -45,6 +45,13 @@ dist/
 build/
 
 # ===========================
+# ARCHIVOS GENERADOS/COMPILADOS
+# ===========================
+*.html
+!index.html
+!template*.html
+
+# ===========================
 # BASE DE DATOS
 # ===========================
 # SQLite (para pruebas locales)
@@ -66,6 +73,8 @@ db.sqlite3
 *.log.*
 logs/
 chatbot_server.log
+deployment-logs/
+aws-deployment-scripts/deployment-logs/
 
 # ===========================
 # BACKUPS Y TEMPORALES
@@ -87,6 +96,9 @@ chatbot_server.log
 .vscode/
 .idea/
 *.code-workspace
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
 
 # ===========================
 # SISTEMA OPERATIVO
