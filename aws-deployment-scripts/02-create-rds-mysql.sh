@@ -14,11 +14,11 @@ DB_USERNAME="admin"
 # 🔒 SEGURIDAD: Password debe pasarse como variable de entorno
 # Usar: export DB_PASSWORD="tu-password-seguro" antes de ejecutar este script
 # O pasar como argumento: ./02-create-rds-mysql.sh "tu-password-seguro"
-if [ -z "$DB_PASSWORD" ]; then
-    if [ -n "$1" ]; then
+if [[ -z "$DB_PASSWORD" ]]; then
+    if [[ -n "$1" ]]; then
         DB_PASSWORD="$1"
     else
-        echo "❌ ERROR: DB_PASSWORD no está configurado"
+        echo "❌ ERROR: DB_PASSWORD no está configurado">&2
         echo "Opciones:"
         echo "  1. Exportar variable: export DB_PASSWORD='tu-password-seguro'"
         echo "  2. Pasar como argumento: ./02-create-rds-mysql.sh 'tu-password-seguro'"
@@ -44,7 +44,7 @@ RDS_SECURITY_GROUP_ID=$(aws ec2 create-security-group \
     --query 'GroupId' \
     --output text 2>/dev/null)
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
     echo "✅ Security Group para RDS creado: $RDS_SECURITY_GROUP_ID"
     
     # Permitir acceso MySQL desde EC2 (puerto 3306)
@@ -55,7 +55,7 @@ if [ $? -eq 0 ]; then
         --query 'SecurityGroups[0].GroupId' \
         --output text 2>/dev/null)
     
-    if [ "$EC2_SG_ID" != "None" ] && [ -n "$EC2_SG_ID" ]; then
+    if [[ "$EC2_SG_ID" != "None" ]] && [[ -n "$EC2_SG_ID" ]]; then
         aws ec2 authorize-security-group-ingress \
             --group-id $RDS_SECURITY_GROUP_ID \
             --protocol tcp \
@@ -100,7 +100,7 @@ aws rds create-db-subnet-group \
     --subnet-ids ${SUBNET_ARRAY[@]} \
     --region $REGION 2>/dev/null
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
     echo "✅ DB Subnet Group creado: $SUBNET_GROUP_NAME"
 else
     echo "✅ DB Subnet Group ya existe: $SUBNET_GROUP_NAME"
@@ -114,7 +114,7 @@ aws rds create-db-parameter-group \
     --description "Custom parameter group for Lannister MySQL" \
     --region $REGION 2>/dev/null
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
     echo "✅ Parameter Group creado: $PARAMETER_GROUP_NAME"
     
     # Configurar parámetros optimizados para Django
@@ -154,7 +154,7 @@ aws rds create-db-instance \
         "Key=Environment,Value=Production" \
         "Key=Project,Value=Lannister-Backend"
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
     echo "✅ Instancia RDS MySQL creación iniciada: $DB_INSTANCE_IDENTIFIER"
     
     # 5. Esperar que la instancia esté disponible
@@ -214,6 +214,6 @@ EOF
     echo "💾 Credenciales guardadas en: rds-credentials.txt"
     
 else
-    echo "❌ Error al crear la instancia RDS"
+    echo "❌ Error al crear la instancia RDS">&2
     exit 1
 fi
