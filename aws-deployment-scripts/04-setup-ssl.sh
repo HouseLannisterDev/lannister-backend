@@ -3,7 +3,7 @@
 # Script para configurar Let's Encrypt SSL en el servidor
 # Ejecutar DESPUÉS del despliegue básico
 
-if [ $# -ne 3 ]; then
+if [[ $# -ne 3 ]]; then
     echo "Uso: $0 <IP_PUBLICA_EC2> <ARCHIVO_CLAVE_PRIVADA> <DOMINIO>"
     echo "Ejemplo: $0 54.123.45.67 lannister-backend-key.pem api.lannister.com"
     exit 1
