@@ -15,7 +15,7 @@ INSTANCE_NAME="lannister-backend-server"
 # 1. Crear par de claves si no existe
 echo "📝 Verificando/creando par de claves..."
 aws ec2 describe-key-pairs --key-names $KEY_NAME --region $REGION 2>/dev/null
-if [ $? -ne 0 ]; then
+if [[ $? -ne 0 ]]; then
     echo "Creando nuevo par de claves: $KEY_NAME"
     aws ec2 create-key-pair \
         --key-name $KEY_NAME \
@@ -37,7 +37,7 @@ SECURITY_GROUP_ID=$(aws ec2 create-security-group \
     --query 'GroupId' \
     --output text 2>/dev/null)
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
     echo "✅ Security Group creado: $SECURITY_GROUP_ID"
     
     # Agregar reglas de seguridad
