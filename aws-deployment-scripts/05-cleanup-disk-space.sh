@@ -3,7 +3,7 @@
 # Script para limpiar espacio en disco en el servidor EC2
 # Ejecutar cuando se necesite liberar espacio
 
-if [ $# -ne 2 ]; then
+if [[ $# -ne 2 ]]; then
     echo "Uso: $0 <IP_PUBLICA_EC2> <ARCHIVO_CLAVE_PRIVADA>"
     echo "Ejemplo: $0 54.123.45.67 lannister-backend-key.pem"
     exit 1
