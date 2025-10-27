@@ -39,8 +39,8 @@ FAIL_COUNT=0
 # 1. Generar con D2 Lang
 echo -e "${YELLOW}🔹 Generando con D2 Lang...${NC}"
 if command_exists d2; then
-    # SVG (mejor calidad)
-    if d2 lannister_components.d2 "$OUTPUT_DIR/lannister_components_d2.svg" 2>/dev/null; then
+    # SVG (mejor calidad) - usar layout ELK para soporte de nested containers
+    if d2 --layout elk lannister_components.d2 "$OUTPUT_DIR/lannister_components_d2.svg" 2>/dev/null; then
         echo -e "   ${GREEN}✅ SVG generado: generated/lannister_components_d2.svg${NC}"
         ((SUCCESS_COUNT++))
     else
@@ -48,8 +48,8 @@ if command_exists d2; then
         ((FAIL_COUNT++))
     fi
     
-    # PNG
-    if d2 lannister_components.d2 "$OUTPUT_DIR/lannister_components_d2.png" 2>/dev/null; then
+    # PNG - usar layout ELK
+    if d2 --layout elk lannister_components.d2 "$OUTPUT_DIR/lannister_components_d2.png" 2>/dev/null; then
         echo -e "   ${GREEN}✅ PNG generado: generated/lannister_components_d2.png${NC}"
         ((SUCCESS_COUNT++))
     else

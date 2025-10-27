@@ -170,33 +170,3 @@ application.middleware.session -> persistence.redis.sessionStore
 # Scraper
 external.scraper -> external.gnews: Fetch Articles
 external.scraper -> persistence.mongodb.news: Insert
-
-# Notas
-notes: {
-  note1: |md
-    ## Django Configuration
-    - Version: 5.2.5
-    - Python: 3.12+
-    - WSGI: Gunicorn
-  | {
-    near: application.django
-  }
-  
-  note2: |md
-    ## MongoDB Stats
-    - Cap: 10,000 docs
-    - Categories: 5
-    - Index: url (unique)
-  | {
-    near: persistence.mongodb
-  }
-  
-  note3: |md
-    ## Chatbot Strategy
-    - FAQ Classification (ML)
-    - News Search (MongoDB)
-    - Failover responses
-  | {
-    near: application.chatbot.service
-  }
-}
