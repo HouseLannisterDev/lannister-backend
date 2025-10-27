@@ -129,10 +129,16 @@ POST /chatbot/search/    # Buscar noticias
 
 ## 📚 Documentación
 
+### 🏗️ Arquitectura
+- **[Diagrama de Componentes](./docs/architecture/COMPONENT_DIAGRAM.md)** - Componentes UML y detalles técnicos
+- **[Arquitectura General](./docs/architecture/ARCHITECTURE_OVERVIEW.md)** - Visión de alto nivel y despliegue AWS
+
+### 📖 Guías Técnicas
 - **[Documentación de API](./docs/api/API_Documentation.md)** - Endpoints y ejemplos completos
 - **[Guía de Deployment AWS](./docs/deployment/DEPLOY_AWS_GUIDE.md)** - Deploy paso a paso en AWS
 - **[Guía de Testing](./docs/testing/POSTMAN_TESTING_GUIDE.md)** - Testing con Postman
 - **[Seguridad](./docs/security/SECURITY_CLEANUP.md)** - Mejores prácticas de seguridad
+- **[Mantenimiento del Repositorio](./docs/REPOSITORY_MAINTENANCE.md)** - Guía de mantenimiento
 
 ## 🐳 Docker
 
