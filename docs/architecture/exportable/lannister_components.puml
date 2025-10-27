@@ -1,0 +1,144 @@
+@startuml Lannister_Backend_Components
+
+!define RECTANGLE class
+
+' Estilos
+skinparam component {
+    BackgroundColor<<presentation>> LightBlue
+    BackgroundColor<<application>> LightGreen
+    BackgroundColor<<database>> LightCoral
+    BackgroundColor<<external>> LightYellow
+    BackgroundColor<<security>> Lavender
+}
+
+' Presentación
+package "Presentación Layer" {
+    [Cliente Web/Mobile\nReact] as Client <<presentation>>
+    [NGINX\nReverse Proxy\nSSL/TLS] as NGINX <<presentation>>
+}
+
+' Aplicación
+package "Aplicación Layer" {
+    [Django WSGI\nGunicorn] as Django <<application>>
+    [URL Router] as Router <<application>>
+    
+    package "Middleware Stack" {
+        [CORS Middleware] as CORS
+        [Security Middleware] as Security
+        [Session Middleware] as Session
+        [CSRF Middleware] as CSRF
+        [Auth Middleware] as Auth
+    }
+    
+    package "News Module" {
+        [News Views] as NewsViews
+        [News Services] as NewsServices
+        [News Repository] as NewsRepo
+    }
+    
+    package "Chatbot Module" {
+        [Chatbot Views] as ChatViews
+        [Chatbot Factory] as ChatFactory
+        [Chatbot Service] as ChatService
+        [FAQ Manager] as FAQMgr
+        [Text Normalizer] as Normalizer
+        [Model Provider] as ModelProvider
+        [News Search Service] as NewsSearch
+        [Failover Manager] as Failover
+    }
+    
+    package "Users Module" {
+        [User ViewSet] as UserViews
+        [Favorite ViewSet] as FavViews
+        [Auth Views] as AuthViews
+        [Serializers] as Serializers
+    }
+}
+
+' Persistencia
+package "Persistencia Layer" {
+    database "MySQL\nAWS RDS" as MySQL <<database>> {
+        [Users Table]
+        [Favorites Table]
+        [ChatLogs Table]
+        [Sessions Table]
+    }
+    
+    database "MongoDB\nAtlas" as MongoDB <<database>> {
+        [News Collection\n~10K docs]
+        [Metadata Collection]
+    }
+    
+    database "Redis\nElastiCache" as Redis <<database>> {
+        [Session Store]
+        [Cache Store]
+    }
+}
+
+' Externos
+package "Servicios Externos" {
+    [GNEWS API] as GNEWS <<external>>
+    [HuggingFace\nDistilBERT] as HuggingFace <<external>>
+    [News Scraper] as Scraper <<external>>
+}
+
+' Relaciones - Presentación
+Client --> NGINX : HTTPS
+NGINX --> Django : Forward
+
+' Relaciones - Aplicación
+Django --> Router
+Django --> CORS
+Django --> Security
+Django --> Session
+Django --> CSRF
+Django --> Auth
+
+Router --> NewsViews
+Router --> ChatViews
+Router --> UserViews
+
+NewsViews --> NewsServices
+NewsServices --> NewsRepo
+NewsRepo --> MongoDB
+
+ChatViews --> ChatFactory
+ChatFactory --> ChatService
+ChatService --> FAQMgr
+ChatService --> Normalizer
+ChatService --> ModelProvider
+ChatService --> NewsSearch
+ChatService --> Failover
+NewsSearch --> MongoDB
+ModelProvider --> HuggingFace
+
+UserViews --> Serializers
+FavViews --> Serializers
+AuthViews --> Serializers
+Serializers --> MySQL
+
+Session --> Redis
+
+Scraper --> GNEWS
+Scraper --> MongoDB
+
+note right of Django
+  Django 5.2.5
+  Python 3.12+
+  Gunicorn Workers
+end note
+
+note right of MongoDB
+  Cap: 10,000 docs
+  Categories: 5
+  Unique index: url
+end note
+
+note right of ChatService
+  Hybrid approach:
+  - FAQ Classification (ML)
+  - News Search (MongoDB)
+  - Failover responses
+end note
+
+@enduml
