@@ -49,6 +49,12 @@ build/
 # ===========================
 *.html
 !index.html
+
+# Diagramas generados automáticamente
+docs/architecture/generated/
+*.png
+*.svg
+!docs/architecture/exportable/
 !template*.html
 
 # ===========================
