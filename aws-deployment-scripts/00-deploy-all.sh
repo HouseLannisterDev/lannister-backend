@@ -26,14 +26,14 @@ mkdir -p deployment-logs
 echo "📋 PASO 1: Creando instancia EC2..."
 ./01-create-ec2-instance.sh 2>&1 | tee deployment-logs/01-ec2-creation.log
 
-if [ ${PIPESTATUS[0]} -ne 0 ]; then
+if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
     echo "❌ Error en la creación de EC2. Ver log: deployment-logs/01-ec2-creation.log">&2
     exit 1
 fi
 
 # Extraer IP pública del log
 PUBLIC_IP=$(grep "IP Pública:" deployment-logs/01-ec2-creation.log | awk '{print $3}')
-if [ -z "$PUBLIC_IP" ]; then
+if [[ -z "$PUBLIC_IP" ]]; then
     echo "❌ No se pudo obtener la IP pública de la instancia EC2"
     exit 1
 fi
@@ -46,11 +46,11 @@ echo "📋 PASO 2: ¿Crear nueva instancia RDS MySQL? (y/n)"
 echo "   (Si ya tienes una instancia RDS, presiona 'n' y proporciona los datos manualmente)"
 read -p "Respuesta: " create_rds
 
-if [ "$create_rds" = "y" ] || [ "$create_rds" = "Y" ]; then
+if [[ "$create_rds" = "y" ]] || [[ "$create_rds" = "Y" ]]; then
     echo "Creando instancia RDS MySQL..."
     ./02-create-rds-mysql.sh 2>&1 | tee deployment-logs/02-rds-creation.log
     
-    if [ ${PIPESTATUS[0]} -ne 0 ]; then
+    if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
         echo "❌ Error en la creación de RDS. Ver log: deployment-logs/02-rds-creation.log">&2
         exit 1
     fi
@@ -67,13 +67,13 @@ echo "📋 PASO 3: Configuración de MongoDB"
 echo "Por favor proporciona la URI de conexión a MongoDB Atlas:"
 read -p "MongoDB URI: " MONGO_URI
 
-if [ -z "$MONGO_URI" ]; then
+if [[ -z "$MONGO_URI" ]]; then
     echo "⚠️ No se proporcionó URI de MongoDB, usando configuración local"
     MONGO_URI="mongodb://localhost:27017/lannister_news"
 fi
 
 # Actualizar .env con MongoDB URI
-if [ -f "/tmp/.env" ]; then
+if [[ -f "/tmp/.env" ]]; then
     sed -i.bak "s|MONGO_URI=.*|MONGO_URI=$MONGO_URI|" /tmp/.env
 else
     echo "MONGO_URI=$MONGO_URI" > /tmp/mongo-config.txt
@@ -91,7 +91,7 @@ for i in {1..20}; do
         echo "✅ EC2 listo para el despliegue"
         break
     fi
-    if [ $i -eq 20 ]; then
+    if [[ $i -eq 20 ]]; then
         echo "❌ Timeout: EC2 no está respondiendo después de 10 minutos"
         echo "   Puedes intentar el despliegue manualmente con:"
         echo "   ./03-deploy-backend.sh $PUBLIC_IP lannister-backend-key.pem"
@@ -107,7 +107,7 @@ echo ""
 echo "📋 PASO 5: Desplegando backend en EC2..."
 ./03-deploy-backend.sh $PUBLIC_IP lannister-backend-key.pem 2>&1 | tee deployment-logs/03-backend-deployment.log
 
-if [ ${PIPESTATUS[0]} -ne 0 ]; then
+if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
     echo "❌ Error en el despliegue del backend. Ver log: deployment-logs/03-backend-deployment.log">&2
     exit 1
 fi
