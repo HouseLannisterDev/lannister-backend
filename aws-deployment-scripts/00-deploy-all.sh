@@ -9,7 +9,7 @@ echo ""
 
 # Verificar que AWS CLI esté configurado
 if ! aws sts get-caller-identity > /dev/null 2>&1; then
-    echo "❌ Error: AWS CLI no está configurado o las credenciales son inválidas"
+    echo "❌ Error: AWS CLI no está configurado o las credenciales son inválidas">&2
     echo "   Ejecuta: aws configure"
     exit 1
 fi
@@ -27,7 +27,7 @@ echo "📋 PASO 1: Creando instancia EC2..."
 ./01-create-ec2-instance.sh 2>&1 | tee deployment-logs/01-ec2-creation.log
 
 if [ ${PIPESTATUS[0]} -ne 0 ]; then
-    echo "❌ Error en la creación de EC2. Ver log: deployment-logs/01-ec2-creation.log"
+    echo "❌ Error en la creación de EC2. Ver log: deployment-logs/01-ec2-creation.log">&2
     exit 1
 fi
 
@@ -51,7 +51,7 @@ if [ "$create_rds" = "y" ] || [ "$create_rds" = "Y" ]; then
     ./02-create-rds-mysql.sh 2>&1 | tee deployment-logs/02-rds-creation.log
     
     if [ ${PIPESTATUS[0]} -ne 0 ]; then
-        echo "❌ Error en la creación de RDS. Ver log: deployment-logs/02-rds-creation.log"
+        echo "❌ Error en la creación de RDS. Ver log: deployment-logs/02-rds-creation.log">&2
         exit 1
     fi
     echo "✅ RDS MySQL creado exitosamente"
@@ -108,7 +108,7 @@ echo "📋 PASO 5: Desplegando backend en EC2..."
 ./03-deploy-backend.sh $PUBLIC_IP lannister-backend-key.pem 2>&1 | tee deployment-logs/03-backend-deployment.log
 
 if [ ${PIPESTATUS[0]} -ne 0 ]; then
-    echo "❌ Error en el despliegue del backend. Ver log: deployment-logs/03-backend-deployment.log"
+    echo "❌ Error en el despliegue del backend. Ver log: deployment-logs/03-backend-deployment.log">&2
     exit 1
 fi
 
