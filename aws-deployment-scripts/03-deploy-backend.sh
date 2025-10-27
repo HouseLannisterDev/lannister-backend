@@ -40,7 +40,7 @@ for i in {1..30}; do
         echo "✅ Servidor listo para configuración"
         break
     fi
-    if [ $i -eq 30 ]; then
+    if [[ $i -eq 30 ]]; then
         echo "❌ Timeout: El servidor no responde después de 5 minutos"
         exit 1
     fi
@@ -302,7 +302,7 @@ run_remote "cd /home/lannister/app && docker-compose -f docker-compose.prod.yml 
 # 11. Crear superusuario de Django (opcional)
 echo "👤 ¿Quieres crear un superusuario de Django? (y/n)"
 read -p "Respuesta: " create_superuser
-if [ "$create_superuser" = "y" ] || [ "$create_superuser" = "Y" ]; then
+if [[ "$create_superuser" = "y" ]] || [[ "$create_superuser" = "Y" ]]; then
     echo "Ejecuta el siguiente comando manualmente en el servidor:"
     echo "ssh -i $KEY_FILE ubuntu@$PUBLIC_IP 'cd /home/lannister/app && docker-compose -f docker-compose.prod.yml exec app python manage.py createsuperuser'"
 fi
