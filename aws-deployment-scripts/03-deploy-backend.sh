@@ -4,7 +4,7 @@
 # Ejecutar DESPUÉS de que la instancia EC2 esté lista
 
 # Verificar parámetros
-if [ $# -ne 2 ]; then
+if [[ $# -ne 2 ]]; then
     echo "Uso: $0 <IP_PUBLICA_EC2> <ARCHIVO_CLAVE_PRIVADA>"
     echo "Ejemplo: $0 54.123.45.67 lannister-backend-key.pem"
     exit 1
@@ -18,8 +18,8 @@ echo "   - IP: $PUBLIC_IP"
 echo "   - Clave: $KEY_FILE"
 
 # Verificar que el archivo de clave existe
-if [ ! -f "$KEY_FILE" ]; then
-    echo "❌ Error: No se encuentra el archivo de clave privada: $KEY_FILE"
+if [[ ! -f "$KEY_FILE" ]]; then
+    echo "❌ Error: No se encuentra el archivo de clave privada: $KEY_FILE">&2
     exit 1
 fi
 
@@ -61,7 +61,7 @@ run_remote "cd /home/lannister/app && git clone $REPO_URL ."
 echo "⚙️ Configurando variables de entorno..."
 
 # Leer credenciales RDS si existen
-if [ -f "rds-credentials.txt" ]; then
+if [[ -f "rds-credentials.txt" ]]; then
     source rds-credentials.txt
     echo "✅ Credenciales RDS cargadas"
 else
